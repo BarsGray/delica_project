@@ -1,0 +1,203 @@
+*{padding: 0;margin: 0;border: 0;}
+*,*:before,*:after{-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+nav,footer,header,aside{display: block;}
+html,body{height:100%;width:100%;font-size:100%;line-height:1;-ms-text-size-adjust:100%;-moz-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+input,button,textarea{font-family:inherit;}
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner{padding:0;border:0;}
+a,a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
+a{color:inherit;}
+/* ===================================== fonts ========================================================= */
+@font-face {
+  font-family: 'Onest';
+  font-weight: 500;
+  font-style: normal;
+  src: local('AlumniSans'),
+    url('../fonts/Onest-Medium.woff') format('woff'),
+    url('../fonts/Onest-Medium.woff2') format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Onest';
+  font-weight: 400;
+  font-style: normal;
+  src: local('AlumniSans'),
+    url('../fonts/Onest-Regular.woff') format('woff'),
+    url('../fonts/Onest-Regular.woff2') format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'AlumniSans';
+  font-weight: 400;
+  font-style: normal;
+  src: local('AlumniSans'),
+    url('../fonts/AlumniSans-Regular.woff') format('woff'),
+    url('../fonts/AlumniSans-Regular.woff2') format('woff2');
+  font-display: swap;
+}
+/* ============================================================================================== */
+:root {
+  --color_text_header: #383838;
+  --color_hover: #FF610C;
+  --text_size_main: 16px;
+  --text_size_main_plus: 18px;
+  --text_size_main_minus: 14px;
+}
+/* ============================================================================================== */
+.ham {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 400ms;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.hamRotate.active {
+  transform: rotate(45deg);
+}
+
+.hamRotate180.active {
+  transform: rotate(180deg);
+}
+
+.line {
+  fill: none;
+  transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+  stroke: #000;
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.ham7.active .line {stroke: #fff;}
+.ham7 .top {stroke-dasharray: 26 82;}
+.ham7 .middle {stroke-dasharray: 40 111;}
+.ham7 .bottom {stroke-dasharray: 27 161;}
+
+.ham7.active .top {
+  stroke-dasharray: 37 82;
+  stroke-dashoffset: -62px;
+  d: path("m 70 33 h -40 c 0 0 -6 1.3688 -6 8.5 c 0 7.1312 6 8.5013 6 8.5013 l 20 -0.0013");
+}
+
+.ham7.active .middle {stroke-dashoffset: 23px;}
+
+.ham7.active .bottom {
+  stroke-dasharray: 40 161;
+  stroke-dashoffset: -81px;
+  d: path("m 69.5754 67.0738 h -40 c -5.59275 0 -6.8736 -9.34858 1.37103 -9.34858 c 8.24463 0 19.0536 21.7971 19.0536 12.2748 l 0 -40");
+}
+/* ============================================================================================== */
+.menu_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color_text_header);
+  border-radius: 20px;
+  transition: all .3s ease-in-out;
+  width: 48px;
+  height: 48px;
+}
+
+.menu_btn--active {
+  background-color: var(--color_text_header);
+  border: 2px solid var(--color_text_header);
+}
+/* ============================================================================================== */
+body {
+  font-family: 'Onest';
+  background-color: #F3F3F3;
+}
+.container {
+  padding: 0 26px;
+  max-width: 1350px;
+  margin: 0 auto;
+}
+.header {
+  background-color: #fff;
+}
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header_top_row {
+  border-bottom: 1px solid #C8C8C8;
+  padding: 12px 0 11px;
+}
+.header_menu {
+  padding: 20px 0;
+  font-weight: 500;
+}
+.header_menu nav,
+.header_menu ul {
+  width: 100%;
+}
+.header_menu ul {
+  display: flex;
+  justify-content: space-between;
+}
+.main_btn {
+  padding: 10px 22px;
+  line-height: 1.5;
+  color: var(--color_text_header);
+  font-size: 16px;
+  border: 2px solid var(--color_text_header);
+  border-radius: 20px;
+  transition: color .2s ease-in-out,background-color .2s ease-in-out;
+}
+.main_btn:hover {
+  color: #fff;
+  background-color: var(--color_text_header);
+}
+.main_number {
+  font-family: 'AlumniSans';
+  font-size: 30px;
+  color: var(--color_text_header);
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  transition: color .2s ease-in-out;
+}
+.main_number path {
+  transition: fill .2s ease-in-out;
+}
+.main_number:hover {
+  color: var(--color_hover);
+}
+.main_number:hover path {
+  fill: var(--color_hover);
+}
+.header_menu a {
+  color: var(--color_text_header);
+  font-size: var(--text_size_main);
+  line-height: 1.5;
+  transition: color .2s ease-in-out;
+}
+.header_menu a:hover {
+  color: var(--color_hover);
+}
+.feedback_box {
+  display: flex;
+  gap: 20px;
+  height: fit-content;
+}
+
+.footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer_top_row {
+  background-color: #fff;
+  border-bottom: 1px solid #C8C8C8;
+  padding: 12px 0 11px;
+}
