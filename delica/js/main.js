@@ -28,3 +28,14 @@ window.addEventListener('resize', () => {
     isExecuted = false;
   }
 });
+// ======================= footer_menu ==========================
+const footerMenuLinkList = document.querySelectorAll('.footer_menu_box nav>ul>li>a[href=""]');
+footerMenuLinkList.forEach((e) => {
+  e.addEventListener('click', (e) => {
+    e.preventDefault();
+    let subMenu = event.currentTarget.nextElementSibling; 
+    console.log(subMenu.scrollHeight);
+    // subMenu.classList.toggle('active');
+    // console.log(e.currentTarget);
+  });
+});
