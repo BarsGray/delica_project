@@ -31,7 +31,7 @@ window.addEventListener('resize', () => {
 // ======================= footer_menu ==========================
 const footerMenuLinkList = document.querySelectorAll('.footer_menu_box nav>ul>li>a[href=""]');
 
-function reset() {
+function resetSubMenu() {
   footerMenuLinkList.forEach((e) => {
     e.nextElementSibling.classList.remove('active');
     e.nextElementSibling.style = '';
@@ -44,9 +44,9 @@ footerMenuLinkList.forEach((e) => {
     let subMenu = e.currentTarget.nextElementSibling;
 
     if(subMenu.classList.contains('active')) {
-      reset();
+      resetSubMenu();
     } else {
-      reset();
+      resetSubMenu();
       subMenu.classList.toggle('active');
       subMenu.setAttribute('style', 'max-height:' + subMenu.scrollHeight + 'px;');
     }
