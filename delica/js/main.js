@@ -30,12 +30,25 @@ window.addEventListener('resize', () => {
 });
 // ======================= footer_menu ==========================
 const footerMenuLinkList = document.querySelectorAll('.footer_menu_box nav>ul>li>a[href=""]');
+
+function reset() {
+  footerMenuLinkList.forEach((e) => {
+    e.nextElementSibling.classList.remove('active');
+    e.nextElementSibling.style = '';
+  });
+}
+
 footerMenuLinkList.forEach((e) => {
   e.addEventListener('click', (e) => {
     e.preventDefault();
-    let subMenu = event.currentTarget.nextElementSibling; 
-    console.log(subMenu.scrollHeight);
-    // subMenu.classList.toggle('active');
-    // console.log(e.currentTarget);
+    let subMenu = e.currentTarget.nextElementSibling;
+
+    if(subMenu.classList.contains('active')) {
+      reset();
+    } else {
+      reset();
+      subMenu.classList.toggle('active');
+      subMenu.setAttribute('style', 'max-height:' + subMenu.scrollHeight + 'px;');
+    }
   });
 });

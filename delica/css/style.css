@@ -132,8 +132,11 @@ a{color:inherit;}
 .footer_menu_box nav>ul>li>ul {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  /* gap: 16px; */
   transition: all .3s ease-in-out;
+}
+.footer_menu_box nav>ul>li>ul>li {
+  margin-bottom: 16px;
 }
 .footer_menu_box nav>ul>li>ul a {
   transition: color .2s ease-in-out;
@@ -319,7 +322,7 @@ body {
   padding: 12px 0 11px;
 }
 .footer_middle_row {
-  padding: 40px 0 80px;
+  padding: 40px 0 64px;
 }
 .copy_row {
   padding-bottom: 40px;
@@ -378,7 +381,7 @@ body {
     min-width: 588px;
   }
   .footer_middle_row {
-    padding-bottom: 60px;
+    padding-bottom: 44px;
   }
   .footer_contacts_list .mail-link,.footer_contacts_list .footer_adress {
     font-size: 14px;
