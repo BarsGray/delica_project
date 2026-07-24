@@ -132,7 +132,6 @@ a{color:inherit;}
 .footer_menu_box nav>ul>li>ul {
   display: flex;
   flex-direction: column;
-  /* gap: 16px; */
   transition: all .3s ease-in-out;
 }
 .footer_menu_box nav>ul>li>ul>li {
@@ -143,9 +142,6 @@ a{color:inherit;}
 }
 .footer_menu_box nav>ul>li>ul a:hover {
   color: var(--color_hover);
-}
-.footer_menu_box nav>ul>li>ul.active {
-  max-height: 500px;
 }
 /* =================================== footer_menu ============================================ */
 .content {
@@ -340,6 +336,11 @@ body {
   font-weight: 500;
   line-height: 1.4;
 }
+.swiper-slide {
+  height: 820px;
+  background-size: cover;
+  background-position: center center;
+}
 @media (max-width: 1100px) {
   .menu_btn {display: flex;}
   .header_top_row {border-bottom: unset;}
@@ -427,15 +428,22 @@ body {
     justify-content: space-between;
     flex-direction: row-reverse;
   }
-  .footer_menu_box nav>ul>li>a::before {
+  .footer_menu_box nav>ul>li>a[href=""]::before {
     content: '';
     width: 16px;
     height: 16px;
     background: url('../img/chevron.svg');
+    transition: transform .3s ease-in-out;
+  }
+  .footer_menu_box nav>ul>li>a[href=""].active::before {
+    transform: rotate(-180deg);
   }
   .footer_menu_box nav>ul>li>ul {
     max-height: 0;
     overflow-y: hidden;
+  }
+  .footer_middle_row {
+	  padding-bottom: 30px;
   }
 }
 @media (max-width: 750px) {
@@ -474,6 +482,13 @@ body {
   .footer .main_btn {display: none;}
   .header_menu.header_menu--active {padding: 30px 0;}
   .header_menu.header_menu--active .container {max-height: calc(100vh - 130px);}
+}
+@media (max-width: 500px) {
+  .copy_row .container {
+    flex-direction: column;
+    gap: 30px;
+    align-items: start;
+  }
 }
 @media (max-width: 390px) {
   .header .main_btn {width: 100%;}
