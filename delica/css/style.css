@@ -249,6 +249,16 @@ body {
   color: #fff;
   background-color: var(--color_text_header);
 }
+.main_btn_2 {
+  display: inline-block;
+  padding: 12px 24px;
+  line-height: 1.5;
+  font-size: 16px;
+  border-radius: 20px;
+  color: #fff;
+  background-color: #FF610C;
+  font-weight: 500;
+}
 .main_number {
   font-family: 'AlumniSans';
   font-size: 30px;
@@ -340,6 +350,59 @@ body {
   height: 820px;
   background-size: cover;
   background-position: center center;
+}
+.bunner_pagination {
+  text-align: center;
+}
+/* .section_bunner {
+  position: relative;
+} */
+.swiper_nav_box .container {
+  position: relative;
+}
+.swiper_nav_box {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+.bunner_btn_prev {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.section_bunner .title_box {
+  margin-top: 80px;
+}
+.title_box .title {
+  font-size: 90px;
+  line-height: 1;
+  color:#fff;
+  font-family: 'AlumniSans';
+  max-width: 850px;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+.bunner_btn_next {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+}
+.swiper-pagination-bullet-active {
+  width: 30px;
+  background: #F05513;
+  border: 1px solid #fff;
+}
+.swiper-pagination-bullet {
+  transition: all .3s ease-in-out;
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  border: 1px solid #9A9A9A;
+  opacity: 1;
 }
 @media (max-width: 1100px) {
   .menu_btn {display: flex;}

@@ -65,14 +65,14 @@ const bunner_swiper = new Swiper('.bunner_swiper', {
   slidesPerView: 1,
   slidesPerGroup: 1,
   // spaceBetween: 24,
-  // navigation: {
-  //   nextEl: ".foto_slider_on_main .btn_next",
-  //   prevEl: ".foto_slider_on_main .btn_prev"
-  // },
-  // pagination: {
-  //   el: ".foto_slider__pagination",
-  //   clickable: true,
-  // },
+  navigation: {
+    nextEl: ".bunner_btn_next",
+    prevEl: ".bunner_btn_prev"
+  },
+  pagination: {
+    el: ".bunner_pagination",
+    clickable: true,
+  },
   // breakpoints: {
   //   890: {
   //     centeredSlides: true,
