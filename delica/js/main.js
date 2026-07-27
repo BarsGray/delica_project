@@ -58,7 +58,7 @@ footerMenuLinkList.forEach((link) => {
     }
   });
 });
-// ======================= swiper ==========================
+// ======================= swiper_bunner ==========================
 const bunner_swiper = new Swiper('.bunner_swiper', {
   loop: true,
   centeredSlides: false,
