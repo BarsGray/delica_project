@@ -600,22 +600,78 @@ body {
 .section_services {
   padding: 70px 0;
 }
-/* .section_services .container {
+.section_services .container {
   display: flex;
   gap: 30px;
+  justify-content: space-between;
 }
 .services_title {
   font-size: 64px;
   color: var(--main_title_color);
   font-family: 'AlumniSans';
   margin-bottom: 20px;
+  max-width: 536px;
 }
 .services_text {
   font-size: var(--text_size_main_plus);
   line-height: 1.5;
   margin-bottom: 30px;
-  max-width: 648px;
-} */
+  max-width: 536px;
+}
+.services_text:last-child {margin-bottom: 0;}
+.services_box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 24px;
+}
+.services_item {
+  max-width: 312px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow .3s ease-in-out;
+}
+.services_item:active {box-shadow: 0px 20px 20px #00000014;}
+.services_item::before {
+  content: '';
+  width: 40px;
+  height: 40px;
+  display: block;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-radius: 16px;
+  margin-bottom: 24px;
+}
+.services_item.item_1::before {background: url('../img/services_item_1.svg');}
+.services_item.item_2::before {background: url('../img/services_item_2.svg');}
+.services_item.item_3::before {background: url('../img/services_item_3.svg');}
+.services_item.item_4::before {background: url('../img/services_item_4.svg');}
+.services_item_title {
+  font-family: 'AlumniSans';
+  font-size: 30px;
+  margin-bottom: 18px;
+}
+.services_item_text {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.services_item_btn {
+  margin-top: 24px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #929292;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  transition: color .2s ease-in-out;
+}
+.services_item_btn path {transition: stroke .3s ease-in-out;}
+.services_item:hover .services_item_btn {color: #FF610C;}
+.services_item:hover .services_item_btn path {stroke: #FF610C;}
 @media (hover: hover) {
   .types_products_item:hover {background-color: #FF753B;color: #fff;background-size: auto 105%;}
   .bunner_btn_prev:hover,.bunner_btn_next:hover {border: 2px solid #F05513;}
@@ -628,6 +684,9 @@ body {
   .footer_menu_box nav>ul>li>ul a:hover {color: var(--akcent_color_hover);}
   .types_products_item:hover .type_prod_link_icon::after {opacity: 1;}
   .types_products_item:hover .type_prod_link_icon::before {opacity: 0;}
+  .services_item:hover .services_item_btn {color: #FF610C;}
+  .services_item:hover .services_item_btn path {stroke: #FF610C;}
+  .services_item:hover {box-shadow: 0px 20px 20px #00000014;}
 }
 @media (max-width: 1100px) {
   :root {
@@ -712,6 +771,14 @@ body {
   .cooperation_text {margin-bottom: 20px;}
   .section_cooperation .main_btn {padding: 8px 20px;border-radius: 18px;font-size: 14px;line-height: 1.4;}
   .section_cooperation {padding: 60px 0;}
+  .services_title {max-width: 308px;}
+  .services_text {max-width: 308px;}
+  .services_item {max-width: 268px;}
+  .services_item_title{font-size: 26px;}
+  .services_item_text{font-size: 14px;}
+  .services_item_text{font-size: 14px;}
+  .services_box {grid-gap: 12px;}
+  .section_services {padding: 60px 0;}
 }
 @media (max-width: 920px) {
   :root {
@@ -773,6 +840,12 @@ body {
     justify-content: space-around;
   }
   .advantages_list, .advantages_title {max-width: unset;}
+  .section_services .container {
+    flex-direction: column;
+    gap: 20px;
+    justify-content: unset;
+  }
+  .services_title,.services_text,.services_item {max-width: unset;}
 }
 @media (max-width: 750px) {
   :root {
@@ -840,6 +913,10 @@ body {
     width: 222px;
     background: url('../img/cooperation_img_mobile.svg') 27% 0% / 121% no-repeat;
   }
+  .services_title {font-size: 38px;}
+  .services_item_title {font-size: 24px;}
+  .services_item {border-radius: 16px;}
+  .section_services {padding: 50px 0;}
 }
 @media (max-width: 650px) {
   .types_products_box {grid-template-columns: 1fr;}
@@ -867,6 +944,7 @@ body {
 @media (max-width: 500px) {
   .copy_row .container {flex-direction: column;gap: 30px;align-items: start;}
   .presents_advantages {padding: 10px;}
+  .services_box {grid-gap: 10px;grid-template-columns: 1fr;}
 }
 @media (max-width: 390px) {
   .header .main_btn {width: 100%;}
