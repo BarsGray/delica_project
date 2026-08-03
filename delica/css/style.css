@@ -755,27 +755,27 @@ label span::after {
 }
 input[type="checkbox"]:checked + span::after {transform: rotate(45deg) scale(1);}
 input[type="checkbox"]:checked + span::before {background-color: #FF610C;}
-.section-title_def_box {padding: 60px 0 40px;}
-.section-title_def_box .container {
+.section_title_def_box {padding: 60px 0 40px;}
+.section_title_def_box .container {
   display: flex;
   gap: 24px;
   position: relative;
 }
-.section-title_def_box .link {
+.section_title_def_box .link {
   position: absolute;
   bottom: 0;
   left: var(--container_padding);
 }
-.section-title_def_box .text_box,
-.section-title_def_box .img {
+.section_title_def_box .text_box,
+.section_title_def_box .img {
   flex: 1 1 0;
 }
-.section-title_def_box .img {
+.section_title_def_box .img {
   height: 500px;
   border-radius: 20px;
   background: url('../img/img_natural.jpg') center center / cover no-repeat;
 }
-.section-title_def_box .title {
+.section_title_def_box .title {
   font-size: var(--bunner_title);
   line-height: 1;
   color: #353535;
@@ -783,10 +783,36 @@ input[type="checkbox"]:checked + span::before {background-color: #FF610C;}
   font-weight: 400;
   margin-bottom: 40px;
 }
-.section-title_def_box .desc {
+.section_title_def_box .desc {
   font-size: var(--text_size_main_plus);
   line-height: 1.5;
 }
+.section_why_us {
+  padding: 40px 0 70px;
+}
+.section_why_us .items_box {
+  display: flex;
+  gap: 24px;
+}
+.why_us_item {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  padding: 20px 19px;
+  border-radius: 20px;
+  background-color: #fff;
+}
+.why_us_title {
+  font-family: 'AlumniSans';
+  font-size: var(--main_title);
+  color: var(--main_title_color);
+  border-top: 1px solid #AEAEAE;
+  padding: 40px 0;
+}
+.why_us_item .title {font-size: 30px;font-family: 'AlumniSans';}
+.why_us_item .text {font-size: 16px;line-height: 1.5;}
+
+
 /* =================================== form ============================================ */
 @media (hover: hover) {
   .types_products_item:hover {background-color: #FF753B;color: #fff;background-size: auto 105%;}
@@ -905,10 +931,10 @@ input[type="checkbox"]:checked + span::before {background-color: #FF610C;}
   .action_title {font-size: 46px;margin-bottom: 30px;}
   .action_text {font-size: 16px;}
   .section_form {padding: 60px 0 140px;}
-  .section-title_def_box .container {gap: 12px;}
-  .section-title_def_box .img {height: 400px;border-radius: 16px;}
-  .section-title_def_box {padding-top: 40px;}
-  .section-title_def_box .title {margin-bottom: 20px;}
+  .section_title_def_box .container {gap: 12px;}
+  .section_title_def_box .img {height: 400px;border-radius: 16px;}
+  .section_title_def_box {padding-top: 40px;}
+  .section_title_def_box .title {margin-bottom: 20px;}
 }
 @media (max-width: 920px) {
   :root {
@@ -976,14 +1002,14 @@ input[type="checkbox"]:checked + span::before {background-color: #FF610C;}
     justify-content: unset;
   }
   .services_title,.services_text,.services_item {max-width: unset;}
-  .section-title_def_box .container {
+  .section_title_def_box .container {
     flex-direction: column;
     gap: 20px;
   }
-  .section-title_def_box .text_box,.section-title_def_box .img {
+  .section_title_def_box .text_box,.section_title_def_box .img {
     flex: unset;
   }
-  .section-title_def_box .link  {
+  .section_title_def_box .link  {
     position: static;
     text-align: center;
   }
@@ -1066,8 +1092,8 @@ input[type="checkbox"]:checked + span::before {background-color: #FF610C;}
   form button::before, form button::after {width: 20px;height: 20px;left: calc(50% + 32px);}
   label span {font-size: 14px;}
   .section_form {padding: 50px 0 120px;}
-  .section-title_def_box {padding: 20px 0;}
-  .section-title_def_box .img {height: 300px;}
+  .section_title_def_box {padding: 20px 0;}
+  .section_title_def_box .img {height: 300px;}
 }
 @media (max-width: 650px) {
   .types_products_box {grid-template-columns: 1fr;}
@@ -1107,7 +1133,7 @@ input[type="checkbox"]:checked + span::before {background-color: #FF610C;}
   .form_box {padding: 24px 16px;}
   form button {width: 100%;}
   .action_title {font-size: 46px;margin-bottom: 10px;}
-  .section-title_def_box .container {gap: 12px;}
-  .section-title_def_box .title {margin-bottom: 12px;}
-  .section-title_def_box .img {height: 180px;border-radius: 12px;}
+  .section_title_def_box .container {gap: 12px;}
+  .section_title_def_box .title {margin-bottom: 12px;}
+  .section_title_def_box .img {height: 180px;border-radius: 12px;}
 }
