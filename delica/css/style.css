@@ -106,9 +106,7 @@ a{color:inherit;}
 }
 /* ============================================================================================== */
 /* =================================== footer_menu ============================================ */
-.footer_menu_box nav>ul>li>a[href=""]:hover {
-  cursor: unset;
-}
+.footer_menu_box nav>ul>li>a[href=""]:hover {cursor: unset;}
 .footer_menu_box nav>ul>li>a {
   font-weight: 500;
   font-size: 16px;
@@ -670,8 +668,94 @@ body {
   transition: color .2s ease-in-out;
 }
 .services_item_btn path {transition: stroke .3s ease-in-out;}
-.services_item:hover .services_item_btn {color: #FF610C;}
-.services_item:hover .services_item_btn path {stroke: #FF610C;}
+.section_form {padding: 70px 0 160px;}
+.form_box {
+  display: flex;
+  gap: 60px;
+  justify-content: space-between;
+  padding: 60px;
+  border-radius: 20px;
+  background-color: #fff;
+}
+.action_box {max-width: 612px;}
+.action_title {
+  font-size: 64px;
+  color: var(--main_title_color);
+  font-family: 'AlumniSans';
+  margin-bottom: 40px;
+}
+.action_text {
+  font-size: 18px;
+  line-height: 1.5;
+}
+/* =================================== form ============================================ */
+form {display: flex;flex-direction: column;gap: 20px;}
+form button {
+  position: relative;
+  padding: 10px 42px 10px 22px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  border-radius: 20px;
+  border: 2px solid #383838;
+  background-color: transparent;
+  transition: all .3s ease-in-out;
+}
+form button::before,form button::after {
+  position: absolute;
+  content: '';
+  width: 24px;
+  height: 24px;
+  top: 50%;
+  left: calc(50% + 34px);
+  transform: translateY(-50%);
+  transition: opacity .3s ease-in-out;
+}
+form button::after {opacity: 1;background: url('../img/icon_buttons.svg') center center / contain no-repeat;}
+form button::before {opacity: 0;background: url('../img/icon_buttons_white.svg') center center / contain no-repeat;}
+form button:active:after {opacity: 0;}
+form button:active:before {opacity: 1;}
+form button:active,form button:active {background-color: #383838; color: #fff;}
+input {width: 100%;}
+input[type="tel"],
+input[type="text"] {font-size: 16px;padding-bottom: 12px;border-bottom: 1px solid #767676;color: #767676;}
+input[type="tel"]::placeholder,input[type="text"]::placeholder {font-size: 16px;color: #C5C5C5;}
+input[type="checkbox"] {position: absolute;z-index: -1;opacity: 0;}
+label {position: relative;padding-left: 32px;display: block;}
+label span {line-height: 1.5;}
+label span a {color: #FF610C;transition: color .3s ease-in-out;}
+label span a:active {color: #000;}
+label span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #FF610C;
+  border-radius: 8px;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+label span::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 5px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+    border-top-width: medium;
+    border-right-width: medium;
+    border-bottom-width: medium;
+    border-left-width: medium;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) scale(0);
+  transition: all 0.2s ease;
+}
+input[type="checkbox"]:checked + span::after {transform: rotate(45deg) scale(1);}
+input[type="checkbox"]:checked + span::before {background-color: #FF610C;}
+/* =================================== form ============================================ */
 @media (hover: hover) {
   .types_products_item:hover {background-color: #FF753B;color: #fff;background-size: auto 105%;}
   .bunner_btn_prev:hover,.bunner_btn_next:hover {border: 2px solid #F05513;}
@@ -687,6 +771,12 @@ body {
   .services_item:hover .services_item_btn {color: #FF610C;}
   .services_item:hover .services_item_btn path {stroke: #FF610C;}
   .services_item:hover {box-shadow: 0px 20px 20px #00000014;}
+  form button:hover:after {opacity: 0;}
+  form button:hover:before {opacity: 1;}
+  form button:hover,form button:hover {background-color: #383838; color: #fff;}
+  label span a:hover {color: #000;}
+  .services_item:hover .services_item_btn {color: #FF610C;}
+  .services_item:hover .services_item_btn path {stroke: #FF610C;}
 }
 @media (max-width: 1100px) {
   :root {
@@ -779,6 +869,10 @@ body {
   .services_item_text{font-size: 14px;}
   .services_box {grid-gap: 12px;}
   .section_services {padding: 60px 0;}
+  .form_box {border-radius: 16px;padding: 40px;gap: 40px;}
+  .action_title {font-size: 46px;margin-bottom: 30px;}
+  .action_text {font-size: 16px;}
+  .section_form {padding: 60px 0 140px;}
 }
 @media (max-width: 920px) {
   :root {
@@ -917,6 +1011,13 @@ body {
   .services_item_title {font-size: 24px;}
   .services_item {border-radius: 16px;}
   .section_services {padding: 50px 0;}
+  .form_box {flex-direction: column-reverse;padding: 30px;gap: 20px;}
+  .action_title {font-size: 42px;margin-bottom: 30px;}
+  .action_text {font-size: 15px;}
+  form button {font-size: 14px;line-height: 1.4;padding: 8px 36px 8px 20px;border-radius: 14px;}
+  form button::before, form button::after {width: 20px;height: 20px;left: calc(50% + 32px);}
+  label span {font-size: 14px;}
+  .section_form {padding: 50px 0 120px;}
 }
 @media (max-width: 650px) {
   .types_products_box {grid-template-columns: 1fr;}
@@ -953,4 +1054,7 @@ body {
   .section_bunner .title_box {margin-top: 16px;}
   .swiper-slide {background-position: 65% center;}
   .advantages_img {min-height: 180px;}
+  .form_box {padding: 24px 16px;}
+  form button {width: 100%;}
+  .action_title {font-size: 46px;margin-bottom: 10px;}
 }
