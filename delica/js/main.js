@@ -78,10 +78,15 @@ const bunner_swiper = new Swiper('.bunner_swiper', {
 const thumbs = new Swiper('.product_thumb_slider', {
     direction: 'vertical',
     slidesPerView: 5,
-    spaceBetween: 15,
+    spaceBetween: 12,
     watchSlidesProgress: true,
     slideToClickedSlide: true,
     watchOverflow: true,
+    breakpoints: {
+    1100: {
+      spaceBetween: 15,
+    },
+  },
 });
 
 const gallery = new Swiper('.product_main_slider', {

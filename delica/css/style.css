@@ -824,17 +824,18 @@ input[type="checkbox"]:checked + span::before {background-color: var(--akcent_co
 .why_us_item.item_3 .img {background: url('../img/why_us_item_3.svg') center center / contain no-repeat;}
 .why_us_item.item_4 .img {background: url('../img/why_us_item_4.svg') center center / contain no-repeat;}
 
+.product_box {
+  display: flex;
+  gap: 24px;
+  padding-top: 40px;
+  border-top: 1px solid #A1A1A1;
+}
 .product_gallery {
-  width: 50%;
   display: flex;
   gap: 24px;
   max-height: 500px;
 }
-.product_main_slider {
-  overflow: hidden;
-  border-radius: 20px;
-  max-width: 536px;
-}
+.product_main_slider {overflow: hidden;border-radius: 20px;max-width: 536px;}
 .product_main_slider .swiper-slide {
   cursor: pointer;
   width: 100%;
@@ -842,7 +843,7 @@ input[type="checkbox"]:checked + span::before {background-color: var(--akcent_co
   overflow: hidden;
   border-radius: 20px;
 }
-.product_thumb_slider {overflow: hidden;}
+.product_thumb_slider {overflow: hidden;min-width: 88px;}
 .product_thumb_slider .swiper-slide img,.product_main_slider .swiper-slide img {
   width: 100%;
   height: 100%;
@@ -857,6 +858,32 @@ input[type="checkbox"]:checked + span::before {background-color: var(--akcent_co
   overflow: hidden;
 }
 .product_thumb_slider .swiper-slide-thumb-active {border: 2px solid var(--akcent_color_hover);}
+.product_box_info .title {
+  font-size: var(--main_title);
+  color: var(--main_title_color);
+  font-family: 'AlumniSans';
+  margin-bottom: 20px;
+}
+.product_box_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.params_item {
+  padding-bottom: 8px;
+  border-bottom: 1px solid #EBEBEB;
+  margin-bottom: 7px;
+}
+.params_item:last-child {padding-bottom: 0;border: unset;margin-bottom: 0;}
+.params_item p {
+  line-height: 1.5;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+.product_box_info .main_btn_2 {text-align: center;}
+.params_list {margin-bottom: 10px;}
+
 /* =================================== form ============================================ */
 @media (hover: hover) {
   .types_products_item:hover {background-color: #FF753B;color: #fff;background-size: auto 105%;}
@@ -983,6 +1010,18 @@ input[type="checkbox"]:checked + span::before {background-color: var(--akcent_co
   .why_us_item .title {font-size: 26px;}
   .why_us_item .text{font-size: 14px;}
   .section_why_us .items_box {gap: 12px;grid-template-columns: repeat(2, 1fr);}
+  .product_gallery {gap: 12px;}
+  .product_main_slider{max-width: 388px;}
+  .product_gallery {max-height: 388px;}
+  .product_thumb_slider .swiper-slide {width: 68px;}
+  .product_thumb_slider {min-width: 68px;}
+  .product_box {gap: 12px;}
+  .params_item p {font-size: 14px;}
+  .params_item {
+    padding-bottom: 7px;
+    border-bottom: 1px solid #EBEBEB;
+    margin-bottom: 6px;
+  }
 }
 @media (max-width: 920px) {
   :root {
