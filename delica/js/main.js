@@ -75,21 +75,27 @@ const bunner_swiper = new Swiper('.bunner_swiper', {
   }
 });
 // ======================= swiper_bunner ==========================
-const thumbs = new Swiper('.product_thumb_slider', {
-    direction: 'vertical',
-    slidesPerView: 5,
-    spaceBetween: 12,
-    watchSlidesProgress: true,
-    slideToClickedSlide: true,
-    watchOverflow: true,
-    breakpoints: {
-    1100: {
-      spaceBetween: 15,
+document.querySelectorAll('.product_gallery').forEach((galleryEl) => {
+  const thumbs = new Swiper(galleryEl.querySelector('.product_thumb_slider'), {
+      slidesPerView: 5,
+      spaceBetween: 11,
+      watchSlidesProgress: true,
+      slideToClickedSlide: true,
+      watchOverflow: true,
+      breakpoints: {
+      1100: {
+        direction: 'vertical',
+        spaceBetween: 15,
+      },
+      870: {
+        direction: 'vertical',
+        spaceBetween: 11,
+      },
     },
-  },
-});
+  });
 
-const gallery = new Swiper('.product_main_slider', {
-    spaceBetween: 10,
-    thumbs: {swiper: thumbs}
+  const gallery = new Swiper(galleryEl.querySelector('.product_main_slider'), {
+      spaceBetween: 10,
+      thumbs: {swiper: thumbs}
+  });
 });
