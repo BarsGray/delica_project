@@ -1054,6 +1054,51 @@ input[type="checkbox"]:checked + span::before {background-color: var(--akcent_co
 .why_us_item.item_1 .img {background: url('../img/why_us_item_1.svg') center center / contain no-repeat;}
 .why_us_item.item_2 .img {background: url('../img/why_us_item_2.svg') center center / contain no-repeat;}
 .why_us_item.item_3 .img {background: url('../img/why_us_item_3.svg') center center / contain no-repeat;}
+
+.any_inner {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  padding: 80px;
+  background-color: #ccc;
+  border-radius: 24px;
+  overflow: hidden;
+}
+.any_title {
+  grid-column: 1/-1;
+  font-size: var(--bunner_title);
+  font-family: 'AlumniSans';
+}
+.any_cat_top {
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #fff;
+  margin-bottom: 24px;
+  font-size: 30px;
+  font-family: 'AlumniSans';
+}
+.any_cat_bottom {
+  font-style: var(--text_size_main);
+  color: var(--color_text_header);
+  line-height: 1.5;
+}
+.any_bottom_row {
+  grid-column: 1/-1;
+  padding: 20px;
+  border-radius: 20px;
+  color: #fff;
+  background-color: #F05513;
+}
+.any_bottom_row_title {
+  font-size: var(--main_title);
+  margin-bottom: 12px;
+  font-family: 'AlumniSans';
+}
+.any_bottom_row_text {
+  line-height: 1.5;
+  font-size: var(--text_size_main);
+}
+
 /* =================================== form ============================================ */
 @media (hover: hover) {
   .types_products_item:hover {background-color: #FF753B;color: #fff;background-size: auto 105%;}
