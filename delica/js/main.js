@@ -150,3 +150,19 @@ const foto_slider_swiper = new Swiper('.foto_slider', {
     },
   },
 });
+
+	// ++++++++++++++++++++++++++++ tubs ++++++++++++++++++++++++++++++++++++++++++++
+	const tubs_row = document.querySelector('.catalog_tubs_row');
+
+	if (tubs_row) {
+		const activeTab = tubs_row.querySelector('.active');
+
+		tubs_row.addEventListener('wheel', (e) => {
+			e.preventDefault();
+			const direction = e.deltaY > 0 ? 1 : -1;
+			const scrollStep = 200;
+
+			tubs_row.scrollBy({ left: direction * scrollStep, behavior: 'smooth' });
+		}, { passive: false });
+	}
+
