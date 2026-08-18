@@ -124,11 +124,15 @@ const foto_slider_swiper = new Swiper('.foto_slider', {
 const other_prod_slider = new Swiper('.other_prod_slider', {
   slidesPerView: 4,
   slidesPerGroup: 1,
-  spaceBetween: 24,
-  navigation: {
-    nextEl: ".other_prod_slider_btn_next",
-    prevEl: ".other_prod_slider_btn_prev"
-  },
+  spaceBetween: 12,
+  scrollbar: {el: ".swiper-scrollbar"},
+  navigation: {nextEl: ".other_prod_slider_btn_next",prevEl: ".other_prod_slider_btn_prev"},
+  breakpoints: {
+    1100: {spaceBetween: 24},
+    750: {slidesPerView: 4},
+    500: {slidesPerView: 3},
+    310: {slidesPerView: 1.5}
+  }
 });
 // ======================= fancybox =============
 const galleryParams = {

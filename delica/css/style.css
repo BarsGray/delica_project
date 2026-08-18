@@ -1202,7 +1202,9 @@ input[type="checkbox"]:checked + span::before {background-color: var(--akcent_co
 .contacts_field_value {
   font-size: 16px;
   line-height: 1.5;
+  transition: all .3s ease-in-out;
 }
+a.contacts_field_value:active {color: var(--akcent_color_hover);}
 .contacts_map {
   padding: 50px var(--container_padding) 160px;
   max-width: calc(1320px + var(--container_padding) * 2);
@@ -1312,9 +1314,9 @@ input[type="checkbox"]:checked + span::before {background-color: var(--akcent_co
   color: var(--main_title_color);
   font-family: 'AlumniSans';
 }
-.section_other_prod_slider {padding: 70px 0;}
+.section_other_prod_slider {padding: 70px 0;overflow: hidden;}
 .other_prod_slider_btns {
-  margin-right: auto;
+  /* margin-right: auto; */
   display: flex;
   gap: 12px;
 }
@@ -1355,6 +1357,7 @@ input[type="checkbox"]:checked + span::before {background-color: var(--akcent_co
 }
 .other_prod_slider_btn_next.swiper-button-disabled,
 .other_prod_slider_btn_prev.swiper-button-disabled {border-color: #B1B1B1;}
+.other_prod_slider_btn_prev.swiper-button-disabled::before,.other_prod_slider_btn_next.swiper-button-disabled::before {opacity: 0;}
 .other_prod_slider_btn_prev.swiper-button-disabled::after,.other_prod_slider_btn_next.swiper-button-disabled::after {opacity: 1;}
 .other_prod_slider_btn_next.swiper-button-disabled:active,
 .other_prod_slider_btn_prev.swiper-button-disabled:active,
@@ -1371,32 +1374,57 @@ input[type="checkbox"]:checked + span::before {background-color: var(--akcent_co
   gap: 24px;
   margin-bottom: 40px;
 }
-.other_prod_slider_link {
+.other_prod_slider_link_more {
   font-size: 16px;
   line-height: 1.5;
   color: #383838;
-  display: flex;
-  align-items: center;
-  gap: 2px;
+  margin-left: auto;
+  white-space: nowrap;
+  position: relative;
+  padding-right: 18px;
+  transition: all .2s ease-in-out;
 }
-.other_prod_slider_link::after {
+.other_prod_slider_link_more::before,
+.other_prod_slider_link_more::after {
   content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
   width: 16px;
   height: 16px;
-  background: url('../img/arrow_other_prod_slider_prod_link.svg') center center / cover no-repeat;
+  transition: all .2s ease-in-out;
 }
+.other_prod_slider_link_more::before {background: url('../img/arrow_other_prod_slider_prod_link.svg') center center / cover no-repeat;}
+.other_prod_slider_link_more::after {background: url('../img/arrow_other_prod_slider_prod_link_hover.svg') center center / cover no-repeat;}
+.other_prod_slider_link_more::after {opacity: 0;}
+.other_prod_slider_link_more:active {color: var(--akcent_color_hover);}
+.other_prod_slider_link_more:active::after {opacity: 1;}
+.other_prod_slider_link_more:active::before {opacity: 0;}
 .other_prod_slider_img {
   overflow: hidden;
   border-radius: 20px;
   margin-bottom: 12px;
+  transition: all .3s ease-in-out;
 }
+.other_prod_slider_item:active .other_prod_slider_img {box-shadow: 0px 10px 20px #00000014;}
 .other_prod_slider_img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   aspect-ratio: 156/115;
 }
-.other_prod_slider_name_prod {font-size: 16px;line-height: 1.5;}
+.other_prod_slider_name_prod {font-size: 16px;line-height: 1.5;transition: all .3s ease-in-out;}
+.other_prod_slider_item:active .other_prod_slider_name_prod {color: var(--akcent_color_hover);}
+.section_other_prod_slider .swiper-scrollbar {
+  --swiper-scrollbar-drag-bg-color: #F05513;
+  --swiper-scrollbar-bg-color: #C7C7C7;
+  --swiper-scrollbar-sides-offset: 0;
+  --swiper-scrollbar-size: 6px;
+  position: static;
+  margin-top: 20px;
+  display: none;
+}
 /* =================================== form ============================================ */
 @media (hover: hover) {
   .types_products_item:hover {background-color: #FF753B;color: #fff;background-size: auto 105%;}
@@ -1427,8 +1455,16 @@ input[type="checkbox"]:checked + span::before {background-color: var(--akcent_co
   .catalog_item_btn:hover path {stroke: #fff;}
   .catalog_item_btn:hover {color: #fff;background-color: #383838;}
   .other_prod_slider_btn_prev:hover, .other_prod_slider_btn_next:hover {border: 2px solid #F05513;}
+  .other_prod_slider_link_more:hover {color: var(--akcent_color_hover);}
+  .other_prod_slider_link_more:hover::after {opacity: 1;}
+  .other_prod_slider_link_more:hover::before {opacity: 0;}
+  .other_prod_slider_item:hover .other_prod_slider_img {box-shadow: 0px 10px 20px #00000014;}
+  .other_prod_slider_item:hover .other_prod_slider_name_prod {color: var(--akcent_color_hover);}
+  a.contacts_field_value:hover {color: var(--akcent_color_hover);}
 }
 @media (max-width: 1100px) {
+  body {height: fit-content;}
+  .header {position: sticky;top: 0;}
   :root {
     --bunner_title: 68px;
     --text_size_main_plus: 16px;
@@ -1576,6 +1612,9 @@ input[type="checkbox"]:checked + span::before {background-color: var(--akcent_co
   .catalog_item_name {font-size: 26px;}
   .catalog_item_img {border-radius: 16px;}
   .catalog_item_btn {border-radius: 16px;}
+  .section_other_prod_slider {padding: 60px 0;}
+  .other_prod_slider_name_prod {font-size: 14px;}
+  .other_prod_slider_img {border-radius: 16px;}
 }
 @media (max-width: 920px) {
   :root {
@@ -1836,6 +1875,12 @@ input[type="checkbox"]:checked + span::before {background-color: var(--akcent_co
     padding: 5px 14px;
   }
   .catalog_item_img {border-radius: 12px;}
+  .other_prod_slider_btns {display: none;}
+  .section_other_prod_slider .swiper-scrollbar {display: block;}
+  .other_prod_slider_img {margin-bottom: 10px;border-radius: 12px;}
+  .other_prod_slider_link_more {font-size: 14px;}
+  .section_other_prod_slider {padding: 50px 0;}
+  .section_other_prod_slider .swiper {overflow: visible;}
 }
 @media (max-width: 650px) {
   .types_products_box {grid-template-columns: 1fr;}
@@ -1884,6 +1929,7 @@ input[type="checkbox"]:checked + span::before {background-color: var(--akcent_co
   .product_gallery {height: 356px;}
   .product_box {padding-top: 28px;}
   .catalog_box {grid-template-columns: 1fr;}
+  .other_prod_slider_header {align-items: end;}
 }
 @media (max-width: 390px) {
   .header .main_btn {width: 100%;}
