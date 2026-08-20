@@ -21,36 +21,7 @@
           </ul>
         </div>
         <div class="footer_menu_box">
-          <nav>
-            <ul>
-              <li>
-                <a href="">Компания</a>
-                <ul>
-                  <li><a href="#">О компании</a></li>
-                  <li><a href="#">СТМ</a></li>
-                  <li><a href="#">Контакты</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="">Продукция</a>
-                <ul>
-                  <li><a href="#">Бумага-основа</a></li>
-                  <li><a href="#">Бытовая продукция</a></li>
-                  <li><a href="#">Бумага для диспенсеров</a></li>
-                  <li><a href="#">Бумажные полотенца</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="">Услуги</a>
-                <ul>
-                  <li><a href="#">Покупка макулатуры</a></li>
-                  <li><a href="#">Утилизация документов</a></li>
-                  <li><a href="#">Продажа оборудования</a></li>
-                  <li><a href="#">Грузовые перевозки</a></li>
-                </ul>
-              </li>
-            </ul>
-          </nav>
+          <?php wp_nav_menu('menu=Меню в подвале&container=nav&container_class=menu');?>
         </div>
       </div>
     </div>

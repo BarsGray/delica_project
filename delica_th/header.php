@@ -30,17 +30,7 @@
     </div>
     <div class="header_menu">
       <div class="container">
-        <nav>
-          <ul>
-            <li><a href="#">О компании</a></li>
-            <li><a href="#">Продукция</a></li>
-            <li><a href="#">СТМ</a></li>
-            <li><a href="#">Продажа оборудования</a></li>
-            <li><a href="#">Покупка макулатуры</a></li>
-            <li><a href="#">Грузовые перевозки</a></li>
-            <li><a href="#">Контакты</a></li>
-          </ul>
-        </nav>
+        <?php wp_nav_menu('menu=Меню в шапке&container=nav&container_class=menu');?>
         <a href="#" class="main_btn">Получить консультацию</a>
       </div>
     </div>

@@ -29,7 +29,7 @@ window.addEventListener('resize', () => {
   }
 });
 // ======================= footer_menu ==========================
-const footerMenuLinkList = document.querySelectorAll('.footer_menu_box nav>ul>li>a[href=""]');
+const footerMenuLinkList = document.querySelectorAll('.footer_menu_box nav>ul>li.menu-item-has-children>a');
 
 function resetSubMenu() {
   footerMenuLinkList.forEach((link) => {
@@ -99,36 +99,6 @@ document.querySelectorAll('.product_gallery').forEach((galleryEl) => {
       thumbs: {swiper: thumbs}
   });
 });
-
-// ======================= fancybox =============
-const galleryParams = {
-  dragToClose: false,
-  animated: false,
-  placeFocusBack: false,
-  Carousel: {Toolbar: {display: {left: [],middle: [],right: ['close']}}}
-}
-const sectionProduct = document.querySelectorAll('.section_product');
-
-sectionProduct.forEach((e, i) => {
-  e.querySelectorAll('a').forEach(link => { link.setAttribute('data-fancybox', `gallery-${i}`); });
-  Fancybox.bind(`.product_main_slider [data-fancybox="gallery-${i}"]`, galleryParams);
-});
-
-Fancybox.bind('.foto_slider_on_main [data-fancybox="gallery_foto_slider"]', galleryParams);
-
-// Fancybox.bind('[data-fancybox]', {
-//   dragToClose: false,
-//   Carousel: {
-//     Toolbar: {
-//       display: {
-//         left: [],
-//         middle: [],
-//         right: ['fullscreen','close'],
-//       },
-//     },
-//   },
-// });
-
 // ======================= swiper_foto_slider =============
 const foto_slider_swiper = new Swiper('.foto_slider', {
   loop: true,
@@ -150,3 +120,47 @@ const foto_slider_swiper = new Swiper('.foto_slider', {
     },
   },
 });
+// ======================= other_prod_slider =============
+const other_prod_slider = new Swiper('.other_prod_slider', {
+  slidesPerView: 4,
+  slidesPerGroup: 1,
+  spaceBetween: 12,
+  scrollbar: {el: ".swiper-scrollbar"},
+  navigation: {nextEl: ".other_prod_slider_btn_next",prevEl: ".other_prod_slider_btn_prev"},
+  breakpoints: {
+    1100: {spaceBetween: 24},
+    750: {slidesPerView: 4},
+    500: {slidesPerView: 3},
+    310: {slidesPerView: 1.5}
+  }
+});
+// ======================= fancybox =============
+const galleryParams = {
+  dragToClose: false,
+  animated: false,
+  placeFocusBack: false,
+  Carousel: {Toolbar: {display: {left: [],middle: [],right: ['close']}}}
+}
+const sectionProduct = document.querySelectorAll('.section_product');
+
+sectionProduct.forEach((e, i) => {
+  e.querySelectorAll('a').forEach(link => { link.setAttribute('data-fancybox', `gallery-${i}`); });
+  Fancybox.bind(`.product_main_slider [data-fancybox="gallery-${i}"]`, galleryParams);
+});
+Fancybox.bind('.foto_slider_on_main [data-fancybox="gallery_foto_slider"]', galleryParams);
+
+// ======================= tubs =======================
+const tubs_row = document.querySelector('.catalog_tubs_row');
+
+if (tubs_row) {
+  const activeTab = tubs_row.querySelector('.active');
+
+  tubs_row.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const direction = e.deltaY > 0 ? 1 : -1;
+    const scrollStep = 200;
+
+    tubs_row.scrollBy({ left: direction * scrollStep, behavior: 'smooth' });
+  }, { passive: false });
+}
+

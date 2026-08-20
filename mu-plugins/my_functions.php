@@ -32,11 +32,11 @@ function tehmonolit_th_scripts_style()
 	wp_enqueue_style('tehmonolit_th-style', get_stylesheet_uri(), array(), _S_VERSION);
 }
 
-add_filter('site_transient_update_plugins','filter_plugin_updates');
-function filter_plugin_updates($value){
-	unset($value->response['all-in-one-seo-pack/all_in_one_seo_pack.php']);
-	return $value;
-}
+// add_filter('site_transient_update_plugins','filter_plugin_updates');
+// function filter_plugin_updates($value){
+// 	unset($value->response['all-in-one-seo-pack/all_in_one_seo_pack.php']);
+// 	return $value;
+// }
 
 add_action('admin_head','admin_head');
 function admin_head(){
