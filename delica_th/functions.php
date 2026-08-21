@@ -3,84 +3,56 @@ function show_contacts_page() { ?>
   <div class="section_contacts_page">
     <div class="container">
       <p class="contacts_page_title">Контакты</p>
-        <?php
-          $adress   = get_field('adress');
-          $graffik  = get_field('graffik');
-          $vihodnie = get_field('vihodnie');
+      <?php
+        $adress          = get_field('adress');
+        $graffik         = get_field('graffik');
+        $vihodnie        = get_field('vihodnie');
+        $contacts_blocks = get_field('contacts_blocks');
 
-          if ($graffik || $adress || $vihodnie): ?>
-            <div class="contacts_box">
-              <p class="contacts_box_title">Адрес производства и офиса продаж:</p>
-              <?php if($adress): ?>
-                <p class="contacts_adress"><?php echo $adress; ?></p> <!-- г. Воронеж, Ясный проезд, 1Д -->
-              <?php endif; ?>
-              <?php if($graffik): ?>
-                <div class="contacts_box_field">
-                  <p class="contacts_field_title">График работы</p>
-                  <p class="contacts_field_value"><?php echo $graffik; ?></p> <!-- c 8:00 до 17:00 -->
-                </div>
-              <?php endif; ?>
-              <?php if($vihodnie): ?>
-                <div class="contacts_box_field">
-                  <p class="contacts_field_title">Выходные</p>
-                  <p class="contacts_field_value"><?php echo $vihodnie; ?>суббота, воскресенье</p>
-                </div>
-              <?php endif; ?>
-              <!-- <div class="contacts_box_field">
-                <p class="contacts_field_title">Тел/факс</p>
-                <a href="tel:+74732020989" class="contacts_field_value">+7 (473) 202-09-89</a>
-              </div>
+        if ($graffik || $adress || $vihodnie): ?>
+          <div class="contacts_box">
+            <p class="contacts_box_title">Адрес производства и офиса продаж:</p>
+            <?php if($adress): ?>
+              <p class="contacts_adress"><?php echo $adress; ?></p>
+            <?php endif; ?>
+            <?php if($graffik): ?>
               <div class="contacts_box_field">
-                <p class="contacts_field_title">Моб.</p>
-                <a href="tel:+79036506131" class="contacts_field_value">+7 (903) 650-61-31</a>
+                <p class="contacts_field_title">График работы</p>
+                <p class="contacts_field_value"><?php echo $graffik; ?></p>
               </div>
+            <?php endif; ?>
+            <?php if($vihodnie): ?>
               <div class="contacts_box_field">
-                <p class="contacts_field_title">Эл. почта</p>
-                <a href="mailto:delica.vrn@gmail.com" class="contacts_field_value">delica.vrn@gmail.com</a>
-              </div> -->
-            </div>
-          <?php endif; ?>
+                <p class="contacts_field_title">Выходные</p>
+                <p class="contacts_field_value"><?php echo $vihodnie; ?></p>
+              </div>
+            <?php endif; ?>
+          </div>
+        <?php endif;
 
+        foreach($contacts_blocks as $contacts_block): ?>
+          <div class="contacts_box">
+            <?php if ($contacts_block['contacts_block_title']): ?>
+              <p class="contacts_box_title"><?php echo $contacts_block['contacts_block_title']; ?></p>
+            <?php endif; ?>
+            <?php foreach ($contacts_block['contacts_block'] as $item):
+              $vid_svazi_value = $item['vid_svazi_value'];
+              if (!$vid_svazi_value) continue;
+              $vid_svazi = $item['vid_svazi']['value'];
+              $href = '';
 
-        <div class="contacts_box">
-          <p class="contacts_box_title">Адрес производства и офиса продаж:</p>
-          <p class="contacts_adress">г. Воронеж, Ясный проезд, 1Д</p>
-          <div class="contacts_box_field">
-            <p class="contacts_field_title">График работы</p>
-            <p class="contacts_field_value">c 8:00 до 17:00</p>
+              if ($vid_svazi === 'tel_fax' || $vid_svazi === 'tel') $href = 'tel:';
+              elseif ($vid_svazi === 'mail') $href = 'mailto:'; ?>
+
+              <div class="contacts_box_field">
+                <p class="contacts_field_title"><?php echo $item['vid_svazi']['label']; ?></p>
+                <a href="<?php echo $href . merge_numbers($vid_svazi_value); ?>" class="contacts_field_value"><?php echo $vid_svazi_value; ?></a>
+              </div>
+            <?php endforeach; ?>
           </div>
-          <div class="contacts_box_field">
-            <p class="contacts_field_title">Выходные</p>
-            <p class="contacts_field_value">суббота, воскресенье</p>
-          </div>
-          <div class="contacts_box_field">
-            <p class="contacts_field_title">Тел/факс</p>
-            <a href="tel:+74732020989" class="contacts_field_value">+7 (473) 202-09-89</a>
-          </div>
-          <div class="contacts_box_field">
-            <p class="contacts_field_title">Моб.</p>
-            <a href="tel:+79036506131" class="contacts_field_value">+7 (903) 650-61-31</a>
-          </div>
-          <div class="contacts_box_field">
-            <p class="contacts_field_title">Эл. почта</p>
-            <a href="mailto:delica.vrn@gmail.com" class="contacts_field_value">delica.vrn@gmail.com</a>
-          </div>
-        </div>
-        <div class="contacts_box">
-          <p class="contacts_box_title">Продажа туалетной бумаги и бумажных полотенец:</p>
-          <div class="contacts_box_field">
-            <p class="contacts_field_title">Тел/факс</p>
-            <a href="tel:+74732020989" class="contacts_field_value">+7 (473) 202-09-89</a>
-          </div>
-          <div class="contacts_box_field">
-            <p class="contacts_field_title">Моб.</p>
-            <a href="tel:+79036506131" class="contacts_field_value">+7 (903) 650-61-31</a>
-          </div>
-          <div class="contacts_box_field">
-            <p class="contacts_field_title">Эл. почта</p>
-            <a href="mailto:delica.vrn@gmail.com" class="contacts_field_value">delica.vrn@gmail.com</a>
-          </div>
-        </div>
+        <?php endforeach; ?>
     </div>
   </div>
+  <?php show_map(); ?>
 <?php }
+function show_map() { if ($map = get_field('map', 25)) echo "<div class='contacts_map'>$map</div>"; }

@@ -3,10 +3,9 @@
       <div class="container">
         <a href="/" class="logo"><img src="<?php echo TEMPLATE_URL; ?>/img/logo_delica.svg" alt="logotype"></a>
         <div class="feedback_box">
-          <a href="tel:+74732020727" class="main_number">
-            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.74562 6.20156C7.23384 4.61058 9.13097 3.67252 10.9826 4.10562L14.5289 4.93512C15.9554 5.26878 17.0098 6.31491 17.1906 7.57671L17.6547 10.8148C17.807 11.8782 17.3126 12.9236 16.3609 13.5885L16.1646 13.7161L15.2019 14.2987C14.4756 14.7385 14.263 15.5863 14.7126 16.254L16.5318 18.9563L16.6217 19.0763C17.1007 19.6539 17.9954 19.869 18.7537 19.5693L19.8238 19.146C21.0246 18.6714 22.4363 18.8042 23.5005 19.4913L26.5408 21.4546C27.7257 22.2196 28.2567 23.5246 27.8808 24.7502L26.945 27.7976C26.457 29.3884 24.5606 30.3275 22.7087 29.8945C10.7378 27.0944 3.59065 16.4864 6.74562 6.20156ZM8.56587 6.62733C5.67584 16.0485 12.2228 25.7657 23.1884 28.3306C24.0347 28.5284 24.9017 28.0992 25.1248 27.3718L26.0605 24.3245C26.2403 23.7383 25.9866 23.114 25.4201 22.7482L22.3786 20.7854C21.8696 20.4568 21.1952 20.3934 20.6214 20.6199L19.5514 21.0432L19.5503 21.0438C17.86 21.7116 15.8454 21.1557 14.9057 19.7609L13.0865 17.0586C12.1475 15.6647 12.5898 13.8918 14.111 12.9706L15.0736 12.388L15.1677 12.3265C15.593 12.0293 15.8273 11.5741 15.7976 11.1023L15.7869 11.0007L15.3219 7.7624C15.2354 7.15892 14.7314 6.65856 14.0491 6.49898L10.5029 5.66949C9.65627 5.47147 8.78907 5.90027 8.56587 6.62733Z" fill="#383838"/></svg>
-            <span>+7 473 202 07 27</span>
-          </a>
+          <?php if ($main_tel = get_field('main_tel', 25)): ?>
+            <a href="tel:<?php echo merge_numbers($main_tel); ?>" class="main_number"><?php echo SVG_PHONE ?><span><?php echo $main_tel; ?></span></a>
+          <?php endif; ?>
           <a href="#" class="main_btn">Получить консультацию</a>
         </div>
       </div>
@@ -16,8 +15,12 @@
         <a href="#" class="main_btn">Получить консультацию</a>
         <div class="footer_contacts_box">
           <ul class="footer_contacts_list">
-            <li class="footer_contacts_item"><p class="footer_adress">г. Воронеж, проезд Ясный д. 1-Д</p></li>
-            <li class="footer_contacts_item"><a class="mail-link" href="mailto:delica.vrn@gmail.com">delica.vrn@gmail.com</a></li>
+            <?php if ($adress = get_field('adress', 25)): ?>
+              <li class="footer_contacts_item"><p class="footer_adress"><?php echo $adress; ?></p></li>
+            <?php endif; ?>
+            <?php if ($main_email = get_field('main_email', 25)): ?>
+              <li class="footer_contacts_item"><a class="mail-link" href="mailto:<?php echo $main_email; ?>"><?php echo $main_email; ?></a></li>
+            <?php endif; ?>
           </ul>
         </div>
         <div class="footer_menu_box">
@@ -36,9 +39,6 @@
       </div>
     </div>
   </footer>
-  <script src="js/swiper-bundle.min.js"></script>
-  <script src="js/fancybox.umd.js"></script>
-  <script src="js/main.js"></script>
   <?php wp_footer() ?>
 </body>
 </html>
