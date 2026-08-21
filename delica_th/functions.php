@@ -1,4 +1,16 @@
 <?php
+function title_page_box() { ?>
+  <div class="section_title_def_box">
+    <div class="container">
+      <div class="text_box">
+        <p class="title">Создайте свою торговую марку</p>
+        <p class="desc">Фабрика «Delica» — производитель полного цикла. Выпустим продукцию под вашим брендом: от разработки дизайна до отгрузки готовой партии.</p>
+      </div>
+      <div class="img" style="background-image: url('img/img_natural.jpg')"></div>
+      <a class="link main_btn_2" href="#">Запустить СТМ</a>
+    </div>
+  </div>
+<?php }
 function show_contacts_page() { ?>
   <div class="section_contacts_page">
     <div class="container">
