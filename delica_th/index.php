@@ -2,30 +2,19 @@
   <div class="section_bunner">
     <div class="bunner_swiper swiper">
       <div class="bunner_swiper_row swiper-wrapper">
-        <div class="bunner_slide swiper-slide" style='background-image: url("<?php echo TEMPLATE_URL; ?>/img/bunner1.jpg")'>
-          <div class="container">
-            <div class="title_box">
-              <div class="title">Производство туалетной бумаги и бумажных полотенец</div>
-              <a class="main_btn_2" href="#">Смотреть продукцию</a>
+      <?php $slider = get_field('slider');
+        if(!empty($slider) && is_array($slider)):
+          foreach($slider as $slide): ?>  
+            <div class="bunner_slide swiper-slide" style='background-image: url("<?php echo $slide['slide_img']['url']?>")'>
+              <div class="container">
+                <div class="title_box">
+                  <p class="title"><?php echo $slide['title']; ?></p>
+                  <a class="main_btn_2" href="#">Смотреть продукцию</a>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="bunner_slide swiper-slide" style='background-image: url("<?php echo TEMPLATE_URL; ?>/img/bunner1_test.jpg")'>
-          <div class="container">
-            <div class="title_box">
-              <div class="title">Производство туалетной бумаги и бумажных полотенец</div>
-              <a class="main_btn_2" href="#">Смотреть продукцию</a>
-            </div>
-        </div>
-        </div>
-        <div class="bunner_slide swiper-slide" style='background-image: url("<?php echo TEMPLATE_URL; ?>/img/bunner1.jpg")'>
-          <div class="container">
-            <div class="title_box">
-              <div class="title">Производство туалетной бумаги и бумажных полотенец</div>
-              <a class="main_btn_2" href="#">Смотреть продукцию</a>
-            </div>
-          </div>
-        </div>
+          <?php endforeach;
+        endif; ?>
       </div>
       <div class="swiper_nav_box">
         <div class="container">
@@ -119,25 +108,6 @@
       </div>
     </div>
   </div>
-  <div class="section_form">
-    <div class="container">
-      <div class="form_box">
-        <form>
-          <p><input type="text" placeholder="Имя"></p>
-          <p><input type="tel" placeholder="+7 (000) 123 45 67"></p>
-          <p>
-            <label>
-              <input type="checkbox">
-              <span>Нажимая на кнопку, вы даете <a href="/soglasie-na-obrabotku-personalnyh-dannyh/">согласие на обработку своих персональных данных</a> и соглашаетесь с <a href="/privacy-policy/">политикой конфиденциальности</a>.</span>
-            </label>
-          </p>
-          <p><button>Отправить</button></p>
-        </form>
-        <div class="action_box">
-          <p class="action_title">Оставить заявку</p>
-          <p class="action_text">Свяжитесь с нами — подберем оптимальную продукцию под ваш бизнес, рассчитаем стоимость доставки и подготовим коммерческое предложение.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-<?php get_footer(); ?>
+<?php 
+  show_form();
+  get_footer(); ?>

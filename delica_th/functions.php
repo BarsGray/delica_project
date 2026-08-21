@@ -30,29 +30,48 @@ function show_contacts_page() { ?>
           </div>
         <?php endif;
 
-        foreach($contacts_blocks as $contacts_block): ?>
-          <div class="contacts_box">
-            <?php if ($contacts_block['contacts_block_title']): ?>
-              <p class="contacts_box_title"><?php echo $contacts_block['contacts_block_title']; ?></p>
-            <?php endif; ?>
-            <?php foreach ($contacts_block['contacts_block'] as $item):
-              $vid_svazi_value = $item['vid_svazi_value'];
-              if (!$vid_svazi_value) continue;
-              $vid_svazi = $item['vid_svazi']['value'];
-              $href = '';
+        if(!empty($contacts_blocks) && is_array($contacts_blocks)):
+          foreach($contacts_blocks as $contacts_block): ?>
+            <div class="contacts_box">
+              <?php if ($contacts_block['contacts_block_title']): ?>
+                <p class="contacts_box_title"><?php echo $contacts_block['contacts_block_title']; ?></p>
+              <?php endif; ?>
+              <?php 
+              if(!empty($contacts_block['contacts_block']) && is_array($contacts_block['contacts_block'])):
+                foreach ($contacts_block['contacts_block'] as $item):
+                  $vid_svazi_value = $item['vid_svazi_value'];
+                  if (!$vid_svazi_value) continue;
+                  $vid_svazi = $item['vid_svazi']['value'];
+                  $href = '';
 
-              if ($vid_svazi === 'tel_fax' || $vid_svazi === 'tel') $href = 'tel:';
-              elseif ($vid_svazi === 'mail') $href = 'mailto:'; ?>
+                  if ($vid_svazi === 'tel_fax' || $vid_svazi === 'tel') $href = 'tel:';
+                  elseif ($vid_svazi === 'mail') $href = 'mailto:'; ?>
 
-              <div class="contacts_box_field">
-                <p class="contacts_field_title"><?php echo $item['vid_svazi']['label']; ?></p>
-                <a href="<?php echo $href . merge_numbers($vid_svazi_value); ?>" class="contacts_field_value"><?php echo $vid_svazi_value; ?></a>
-              </div>
-            <?php endforeach; ?>
-          </div>
-        <?php endforeach; ?>
+                  <div class="contacts_box_field">
+                    <p class="contacts_field_title"><?php echo $item['vid_svazi']['label']; ?></p>
+                    <a href="<?php echo $href . merge_numbers($vid_svazi_value); ?>" class="contacts_field_value"><?php echo $vid_svazi_value; ?></a>
+                  </div>
+                <?php endforeach;
+              endif; ?>
+            </div>
+          <?php 
+          endforeach;
+        endif; ?>
     </div>
   </div>
   <?php show_map(); ?>
 <?php }
 function show_map() { if ($map = get_field('map', 25)) echo "<div class='contacts_map'>$map</div>"; }
+function show_form() { ?>
+  <div class="section_form">
+    <div class="container">
+      <div class="form_box">
+        <?php echo do_shortcode('[contact-form-7 id="23aef55"]');?>
+        <div class="action_box">
+          <p class="action_title">Оставить заявку</p>
+          <p class="action_text">Свяжитесь с нами — подберем оптимальную продукцию под ваш бизнес, рассчитаем стоимость доставки и подготовим коммерческое предложение.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<?php }
