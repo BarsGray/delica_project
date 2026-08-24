@@ -307,7 +307,7 @@ class Breadcrumbs {
 			}
 		}
 
-		$before_out = sprintf( $linkpatt, home_url(), $loc->home ) . ( $home_after ? $sep.$home_after : ($out ? $sep : '') );
+		$before_out = '<a class="arrow_back" href="' . home_url() . '">' . SVG_BREAD_BTN . '</a>' . sprintf( $linkpatt, home_url(), $loc->home ) . ( $home_after ? $sep.$home_after : ($out ? $sep : '') );
 
 		$out = apply_filters('kama_breadcrumbs_pre_out', $out, $sep, $loc, $arg );
 
