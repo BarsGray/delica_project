@@ -1,4 +1,22 @@
 jQuery(function ($) {
+  // ======================= header =============
+  const header_top_row_height = document.querySelector('.header_top_row').scrollHeight;
+
+  function scrollTop() {
+    let scroll_scr = window.scrollY;
+    // if (scroll_scr > document.querySelector('.header_top_row').scrollHeight) {
+    // if (scroll_scr > document.querySelector('.header').scrollHeight) {
+    if (scroll_scr > 101) {
+      document.querySelector('.header').classList.add('scroll');
+      // document.querySelector('.section_bunner').setAttribute('style','padding-top:' + 0 + 'px;')
+    } else {
+      document.querySelector('.header').classList.remove('scroll');
+      // document.querySelector('.section_bunner').setAttribute('style','padding-top:' + header_top_row_height.scrollHeight + 'px;')
+    }
+  }
+  scrollTop();
+  window.addEventListener('scroll', scrollTop);
+
   // ======================= menu ==========================
   const menuButton = document.querySelector('.menu_btn');
   const svgMenuButton = document.querySelector('.menu_btn .ham');

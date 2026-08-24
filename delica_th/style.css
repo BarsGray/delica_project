@@ -17,6 +17,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
 a{color:inherit;}
 
 form .wpcf7-list-item {margin: 0;}
+.customize-support {margin-top: -32px;}
 /* ===================================== fonts ========================================================= */
 @font-face {
   font-family: 'Onest';
@@ -164,6 +165,7 @@ form .wpcf7-list-item {margin: 0;}
 body {
   font-family: 'Onest';
   background-color: #F3F3F3;
+  height: fit-content;
 }
 .bread_crumb {
   margin: 60px 0 40px;
@@ -234,6 +236,16 @@ body {
   background-color: #fff;
   z-index: 999;
   position: relative;
+  /* transition: all .5s ease-in-out; */
+  max-height: 150px;
+}
+.header.scroll {
+  position: fixed;
+}
+.header.scroll .header_top_row {
+  opacity: 0;
+  max-height: 0;
+  padding: 0;
 }
 .header_menu {
   padding: 20px 0;
@@ -244,6 +256,7 @@ body {
   overflow: hidden;
   z-index: 999;
   transition: padding .3s ease-in-out;
+  position: relative;
 }
 .header_menu.header_menu--active {
   padding: 40px 0 30px;
