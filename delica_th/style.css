@@ -60,7 +60,7 @@ form .wpcf7-list-item {margin: 0;}
   --container_padding: 26px;
 }
 /* ============================================================================================== */
-.ham {
+/* .ham {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   transition: transform 400ms;
@@ -92,8 +92,35 @@ form .wpcf7-list-item {margin: 0;}
   stroke-dasharray: 40 161;
   stroke-dashoffset: -81px;
   d: path("m 69.5754 67.0738 h -40 c -5.59275 0 -6.8736 -9.34858 1.37103 -9.34858 c 8.24463 0 19.0536 21.7971 19.0536 12.2748 l 0 -40");
-}
+} */
 /* ============================================================================================== */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+.ham {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 400ms;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.hamRotate.active {transform: rotate(45deg);}
+.hamRotate180.active {transform: rotate(180deg);}
+.line {
+  fill: none;
+  transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+  stroke: #000;
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+.ham7.active .line {stroke: #fff;}
+.ham7 .top {stroke-dasharray: 21 82;stroke-dashoffset: -9px;}
+.ham7 .middle {stroke-dasharray: 40 111;}
+.ham7 .bottom {stroke-dasharray: 22 161;stroke-dashoffset: -8px;}
+.ham7.active .top {stroke-dasharray: 17 82;stroke-dashoffset: -62px;}
+.ham7.active .middle {stroke-dashoffset: 23px;}
+.ham7.active .bottom {stroke-dasharray: 40 161;stroke-dashoffset: -83px;}
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 .menu_btn {
   display: none;
   align-items: center;
@@ -209,13 +236,11 @@ body {
   margin: 0 auto;
 }
 .header {
-  position: absolute;
+  position: sticky;
   top: 0;
-  width: 100%;
-
   background-color: #fff;
-  /* position: relative; */
   z-index: 999;
+  transition: all .7s ease-in-out;
 }
 .logo {
   height: 77px;
@@ -236,17 +261,10 @@ body {
   background-color: #fff;
   z-index: 999;
   position: relative;
-  /* transition: all .5s ease-in-out; */
-  max-height: 150px;
+  transition: opacity .3s ease-in-out, box-shadow .3s ease-in-out;
 }
-.header.scroll {
-  position: fixed;
-}
-.header.scroll .header_top_row {
-  opacity: 0;
-  max-height: 0;
-  padding: 0;
-}
+.header.scroll {top: -101px; box-shadow: 0px 20px 20px #00000014;}
+.header.scroll .header_top_row {opacity: 0;}
 .header_menu {
   padding: 20px 0;
   font-weight: 500;
@@ -395,12 +413,6 @@ body {
   color: #929292;
   font-weight: 500;
   line-height: 1.4;
-}
-.section_bunner {
-  padding-top: 165px;
-}
-.section_bunner.scroll {
-  padding-top: 64px;
 }
 .section_bunner .swiper-slide {
   height: 820px;
@@ -760,6 +772,7 @@ form button {
   border: 2px solid #383838;
   background-color: transparent;
   transition: all .3s ease-in-out;
+  color: #000;
 }
 form button::before,form button::after {
   position: absolute;
@@ -1524,8 +1537,10 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
   .arrow_back:hover path {stroke: #fff;}
 }
 @media (max-width: 1100px) {
-  body {height: fit-content;}
-  .header {position: sticky;top: 0;}
+  /* body {height: fit-content;} */
+  /* .header {position: sticky;top: 0;} */
+  .header.scroll {top: 0;}
+  .header.scroll .header_top_row {opacity: 1;}
   :root {
     --bunner_title: 68px;
     --text_size_main_plus: 16px;
