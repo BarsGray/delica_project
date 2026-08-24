@@ -207,8 +207,12 @@ body {
   margin: 0 auto;
 }
 .header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+
   background-color: #fff;
-  position: relative;
+  /* position: relative; */
   z-index: 999;
 }
 .logo {
@@ -378,6 +382,12 @@ body {
   color: #929292;
   font-weight: 500;
   line-height: 1.4;
+}
+.section_bunner {
+  padding-top: 165px;
+}
+.section_bunner.scroll {
+  padding-top: 64px;
 }
 .section_bunner .swiper-slide {
   height: 820px;
