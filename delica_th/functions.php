@@ -196,3 +196,48 @@ function show_foto_slider() {
     </div>
   <?php endif;
 }
+function show_years() {
+  $years = get_field('years');
+  if(!empty($years) && is_array($years)): ?>
+    <div class="section_years_box">
+      <div class="container">
+        <div class="years_box">
+          <?php foreach($years as $year):
+          if(!$year['year']) continue; ?>
+            <div class="year_item">
+              <p class="years_top"><?php echo $year['year']; ?></p>
+              <p class="years_bottom"><?php echo $year['text']; ?></p>
+            </div>
+          <?php endforeach; ?>
+        </div>
+      </div>
+    </div>
+  <?php endif;
+}
+function show_about_advantages() {
+  $about_advantages = get_field('about_advantages');
+  if(!empty($about_advantages) && is_array($about_advantages)): ?>
+    <div class="why_choose_delica">
+      <div class="container">
+        <?php if($about_advantages_main_title = get_field('about_advantages_main_title')): ?>
+          <p class="why_choose_delica_title"><?php echo $about_advantages_main_title; ?></p>
+        <?php endif; ?>
+        <div class="why_choose_delica_box"> 
+          <?php foreach($about_advantages as $item): ?>
+            <div class="why_choose_item">
+              <?php if($item['about_advantages_label']): ?>
+                <p class="why_choose_item_top"><?php echo $item['about_advantages_label']; ?></p>
+              <?php endif; ?>
+              <?php if($item['about_advantages_title']): ?>
+                <p class="why_choose_item_middle"><?php echo $item['about_advantages_title']; ?></p>
+              <?php endif; ?>
+              <?php if($item['about_advantages_text']): ?>
+                <p class="why_choose_item_bottom"><?php echo $item['about_advantages_text']; ?></p>
+              <?php endif; ?>
+            </div>
+          <?php endforeach; ?>
+        </div>
+      </div>
+    </div>
+  <?php endif;
+}

@@ -931,12 +931,13 @@ input[type="checkbox"]:checked + span::before {background-color: var(--akcent_co
 .inform_title {display: block;max-width: calc(100% - 20px);}
 .inform_right_column {flex: 1 1 0;}
 
-.section_years_box {padding: 70px 0;}
-.years_box {display: flex;}
+.section_years_box {padding: 70px 0 50px;}
+.years_box {display: flex; overflow-x: auto; padding-bottom: 20px;}
 .year_item {width: 100%;}
 .years_top {
   position: relative;
-  padding-right: 12px;
+  /* padding-right: 12px; */
+  padding-right: 22px;
   font-size: var(--bunner_title);
   color: #353535;
   font-family: 'AlumniSans';
@@ -1568,7 +1569,7 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
   .product_thumb_slider .swiper-slide {border-radius: 12px;}
   .inform_inner {gap: 20px;}
   .years_bottom {font-size: 14px;}
-  .section_years_box {padding: 60px 0;}
+  .section_years_box {padding: 60px 0 50px;}
   .foto_slider_on_main {padding: 60px 0;}
   .foto_slider_on_main .btn_prev, .foto_slider_on_main .btn_next {width: 44px;height: 44px;border-radius: 16px;}
   .foto_slider_on_main .btn_prev {left: calc(20px + var(--container_padding));}
