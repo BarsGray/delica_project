@@ -25,7 +25,7 @@ function title_def_box() {
   <div class="section_title_def_box">
     <div class="container">
       <div class="text_box">
-        <p class="title"><?php show_zag(); ?></p>
+        <h1 class="title"><?php show_zag(); ?></h1>
         <?php if($title_box_description = get_field('title_box_description')): ?>
           <p class="desc"><?php echo $title_box_description; ?></p>
         <?php endif; ?>
@@ -141,50 +141,58 @@ function show_what_offer() {
 function show_info_top() { ?>
   <div class="section_inform_box">
     <div class="container">
-      <div class="inform_inner inform_inner_two">
-        <div class="inform_left_column">
-          <?php if($info_top_title = get_field('info_top_title')): ?>
-            <p class="inform_title"><?php echo $info_top_title; ?></p>
-          <?php endif; ?>
-          <?php if($info_top_place_left = get_field('info_top_place_left')):
-                  echo $info_top_place_left;
-                endif; ?>
-        </div>
-        <div class="inform_right_column">
-          <?php if($info_top_place_right = get_field('info_top_place_right')):
-                  echo $info_top_place_right;
-                endif; ?>
-          <!-- <p class="inform_text">Мы активно сотрудничаем с предприятиями целлюлозной отрасли, начинающими бизнесменами и всегда готовы помочь в поставках качественной техники. Также вы можете приобрести собственное оборудование для шредирования, чтобы оно всегда было под рукой.</p>
-          <ul class="inform_list">
-            <li><p>Прием макулатуры с вывозом сырья</p></li>
-            <li><p>Клиентоориентированность при определении цены, своевременность оплаты</p></li>
-            <li><p>Работаем с физлицами, офисами, предприятиями.</p></li>
-            <li><p>Работаем с физлицами, офисами, предприятиями.</p></li>
-            <li><p>Туалетная бумага и бумажные полотенца отлично растворяются в воде</p></li>
-            <li><p>Непрерывный производственный процесс - до 300 000 рулончиков туалетной бумаги в сутки</p></li>
-          </ul> -->
-          <div class="inform_attention">
-            <p>+ Индивидуальный расчёт стоимости — для каждого клиента с учётом тоннажа, региона и срочности.</p>
-          </div>
-        </div>
-      </div>
       <div class="inform_inner">
         <div class="inform_left_column">
-          <p class="inform_title">Продажа промышленных машин для целлюлозной отрасли и утилизации</p>
-          <p class="inform_text">Мы активно сотрудничаем с предприятиями целлюлозной отрасли, начинающими бизнесменами и всегда готовы помочь в поставках качественной техники. Также вы можете приобрести собственное оборудование для шредирования, чтобы оно всегда было под рукой.</p>
+          <?php if($info_top_title = get_field('info_top_title')): ?><p class="inform_title"><?php echo $info_top_title; ?></p><?php endif; ?>
+          <?php if($info_top_place_left = get_field('info_top_place_left')): echo $info_top_place_left; endif; ?>
         </div>
         <div class="inform_right_column">
-          <p class="inform_text">Мы активно сотрудничаем с предприятиями целлюлозной отрасли, начинающими бизнесменами и всегда готовы помочь в поставках качественной техники. Также вы можете приобрести собственное оборудование для шредирования, чтобы оно всегда было под рукой.</p>
-          <ul class="inform_list">
-            <li><p>Прием макулатуры с вывозом сырья</p></li>
-            <li><p>Клиентоориентированность при определении цены, своевременность оплаты</p></li>
-            <li><p>Работаем с физлицами, офисами, предприятиями.</p></li>
-            <li><p>Работаем с физлицами, офисами, предприятиями.</p></li>
-            <li><p>Туалетная бумага и бумажные полотенца отлично растворяются в воде</p></li>
-            <li><p>Непрерывный производственный процесс - до 300 000 рулончиков туалетной бумаги в сутки</p></li>
-          </ul>
+          <?php if($info_top_place_right = get_field('info_top_place_right')): echo $info_top_place_right; endif; ?>
+          <?php if($box_alert = get_field('box_alert')): ?><div class="inform_attention"><p><?php echo $box_alert; ?></p></div><?php endif; ?>
         </div>
       </div>
     </div>
   </div>
 <?php }
+function show_info_bottom() {
+  $info_bottom_blok = get_field('info_bottom_blok');
+  if(!empty($info_bottom_blok) && is_array($info_bottom_blok)): ?>
+    <div class="section_inform_box">
+      <div class="container">
+        <?php foreach($info_bottom_blok as $info_bottom_blok_item): ?>
+          <div class="inform_inner">
+            <div class="inform_left_column">
+              <?php if($info_bottom_blok_item['info_bottom_title']): ?><p class="inform_title"><?php echo $info_bottom_blok_item['info_bottom_title']; ?></p><?php endif; ?>
+              <?php if($info_bottom_blok_item['info_bottom_place_left']): echo $info_bottom_blok_item['info_bottom_place_left']; endif; ?>
+            </div>
+            <div class="inform_right_column">
+              <?php if($info_bottom_blok_item['info_bottom_place_right']): echo $info_bottom_blok_item['info_bottom_place_right']; endif; ?>
+              <?php if($info_bottom_blok_item['box_alert']): ?><div class="inform_attention"><p><?php echo $info_bottom_blok_item['box_alert']; ?></p></div><?php endif; ?>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    </div>
+  <?php endif;
+}
+function show_foto_slider() {
+  $foto_slider = get_field('foto_slider');
+  if(!empty($foto_slider) && is_array($foto_slider)): ?>
+    <div class="foto_slider_on_main">
+      <div class="foto_slider_container">
+        <div class="foto_slider swiper">
+          <div class="foto_slider_row swiper-wrapper">
+            <?php foreach($foto_slider as $slide): ?>
+              <div class="foto_slider_item swiper-slide">
+                <a href="<?php echo $slide['url']; ?>" data-fancybox="gallery_foto_slider"><img src="<?php echo $slide['url']; ?>" alt="<?php echo $slide['alt']; ?>"></a>
+              </div>
+            <?php endforeach; ?>
+          </div>
+          <a href="#" class="btn_prev"></a>
+          <a href="#" class="btn_next"></a>
+        </div>
+      </div>
+      <div class="swiper-pagination foto_slider__pagination"></div>
+    </div>
+  <?php endif;
+}

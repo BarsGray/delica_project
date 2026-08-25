@@ -789,7 +789,7 @@ label span::after {
 }
 input[type="checkbox"]:checked + span::after {transform: rotate(45deg) scale(1);}
 input[type="checkbox"]:checked + span::before {background-color: var(--akcent_color_hover);}
-.section_title_def_box {padding: 60px 0 40px;}
+.section_title_def_box {padding: 0 0 40px;}
 .section_title_def_box .container {
   display: flex;
   gap: 24px;
@@ -1549,7 +1549,6 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
   .section_form {padding: 60px 0 140px;}
   .section_title_def_box .container {gap: 12px;}
   .section_title_def_box .img {height: 400px;border-radius: 16px;}
-  .section_title_def_box {padding-top: 40px;}
   .section_title_def_box .title {margin-bottom: 20px;}
   .section_what_offer {padding-bottom: 60px;}
   .what_offer_item .title {font-size: 26px;}
@@ -1807,7 +1806,7 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
   form button::before, form button::after {width: 20px;height: 20px;left: calc(50% + 32px);}
   label span {font-size: 14px;}
   .section_form {padding: 50px 0 120px;}
-  .section_title_def_box {padding: 20px 0;}
+  .section_title_def_box {padding: 0 0 20px;}
   .section_title_def_box .img {height: 300px;}
   .what_offer_item {padding-bottom: 22px;}
   .what_offer_title {padding: 38px 0;}
@@ -1943,7 +1942,7 @@ h2,.h2,
 h3,.h3,
 h4,.h4,
 h5,.h5,
-h6,.h6 {font-family: 'AlumniSans';margin-bottom: 20px;}
+h6,.h6 {font-family: 'AlumniSans';margin-bottom: 20px;color: var(--main_title_color);}
 h1,.h1 {font-size: 90px;}
 h2,.h2 {font-size: 64px;}
 h3,.h3 {font-size: 59px;}
