@@ -138,21 +138,27 @@ function show_what_offer() {
     </div>
   <?php endif;
 }
-function show_info_top() { ?>
-  <div class="section_inform_box">
-    <div class="container">
-      <div class="inform_inner">
-        <div class="inform_left_column">
-          <?php if($info_top_title = get_field('info_top_title')): ?><p class="inform_title"><?php echo $info_top_title; ?></p><?php endif; ?>
-          <?php if($info_top_place_left = get_field('info_top_place_left')): echo $info_top_place_left; endif; ?>
-        </div>
-        <div class="inform_right_column">
-          <?php if($info_top_place_right = get_field('info_top_place_right')): echo $info_top_place_right; endif; ?>
-          <?php if($box_alert = get_field('box_alert')): ?><div class="inform_attention"><p><?php echo $box_alert; ?></p></div><?php endif; ?>
+function show_info_top() {
+  $info_top_title = get_field('info_top_title');
+  $info_top_place_left = get_field('info_top_place_left');
+  $info_top_place_right = get_field('info_top_place_right');
+
+  if($info_top_title || $info_top_place_left || $info_top_place_right): ?>
+    <div class="section_inform_box">
+      <div class="container">
+        <div class="inform_inner">
+          <div class="inform_left_column">
+            <p class="inform_title"><?php echo $info_top_title; ?></p>
+            <?php if($info_top_place_left): echo $info_top_place_left; endif; ?>
+          </div>
+          <div class="inform_right_column">
+            <?php if($info_top_place_right): echo $info_top_place_right; endif; ?>
+            <?php if($box_alert = get_field('box_alert')): ?><div class="inform_attention"><p><?php echo $box_alert; ?></p></div><?php endif; ?>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  <?php endif; ?>
 <?php }
 function show_info_bottom() {
   $info_bottom_blok = get_field('info_bottom_blok');

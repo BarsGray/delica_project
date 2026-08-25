@@ -654,6 +654,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 24px;
+  height: fit-content;
 }
 .services_item {
   max-width: 312px;

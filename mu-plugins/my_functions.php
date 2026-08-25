@@ -56,52 +56,51 @@ function breadcrumbs($sep = ' / ', $args = array(), $l10n = array())
 	echo $inst->get_crumbs($sep, $l10n, $args);
 }
 
-// add_action('kama_breadcrumbs_home_after','add_tax_custom',10,5);
-// function add_tax_custom($false,$linkpatt,$sep,$ptype,$q_obj){
-// 	if(!is_search()){
-// 		$data_taxs=array(
-// 			'service' => 11,
-// 		);
-// 		foreach($data_taxs as $post_type=>$id_page){
-// 			if(isset($ptype->name) && $ptype->name==$post_type){
-// 				$page=get_post($id_page);
-// 				if($q_obj->name==$post_type)
-// 					return $home_after=sprintf($linkpatt,get_permalink($page),$page->post_title); 
-// 				else
-// 					return $home_after=sprintf($linkpatt,get_permalink($page),$page->post_title) . $sep;
-// 			}
-// 		}
-// 	}
-// }
+add_action('kama_breadcrumbs_home_after','add_tax_custom',10,5);
+function add_tax_custom($false,$linkpatt,$sep,$ptype,$q_obj){
+	if(!is_search()){
+		$data_taxs=array(
+			'service' => 193,
+		);
+		foreach($data_taxs as $post_type=>$id_page){
+			if(isset($ptype->name) && $ptype->name==$post_type){
+				$page=get_post($id_page);
+				if($q_obj->name==$post_type)
+					return $home_after=sprintf($linkpatt,get_permalink($page),$page->post_title); 
+				else
+					return $home_after=sprintf($linkpatt,get_permalink($page),$page->post_title) . $sep;
+			}
+		}
+	}
+}
 
 
 function merge_numbers($num) {
   return str_replace([' ', '-', '(', ')'],'',(string) ($num ?? ''));
 }
+function register_service()
+{
+	$post_labels = array(
+		'name' => 'Услуги',
+		'singular_name' => 'Услуга',
+		'add_new' => 'Добавить',
+		'add_new_item' => 'Добавить',
+		'edit_item' => 'Редактировать',
+		'menu_name' => 'Услуги'
+	);
 
-// function register_avtopark()
-// {
-// 	$post_labels = array(
-// 		'name' => 'Автопарк',
-// 		'singular_name' => 'Услуга',
-// 		'add_new' => 'Добавить новую',
-// 		'add_new_item' => 'Добавить новую услугу',
-// 		'edit_item' => 'Редактировать услугу',
-// 		'menu_name' => 'Автопарк'
-// 	);
+	$post_args = array(
+		'labels' => $post_labels,
+		'public' => true,
+		'has_archive' => false,
+		'menu_position' => 5,
+		'menu_icon' => 'dashicons-list-view',
+		'supports' => array('title', 'editor', 'thumbnail'),
+		'rewrite' => array('slug' => 'service'),
+		'show_in_rest' => true,
+		'capability_type' => 'post',
+	);
 
-// 	$post_args = array(
-// 		'labels' => $post_labels,
-// 		'public' => true,
-// 		'has_archive' => 'services',
-// 		'menu_position' => 5,
-// 		'menu_icon' => 'dashicons-admin-network',
-// 		'supports' => array('title', 'editor', 'thumbnail'),
-// 		'rewrite' => array('slug' => 'services'),
-// 		'show_in_rest' => true,
-// 		'capability_type' => 'post',
-// 	);
-
-// 	register_post_type('service', $post_args);
-// }
-// add_action('init', 'register_avtopark');
+	register_post_type('service', $post_args);
+}
+add_action('init', 'register_service');
