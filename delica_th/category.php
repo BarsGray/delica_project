@@ -1,9 +1,23 @@
 <?php
-get_header();
-show_breadcrumbs();
-title_def_box();
-show_info_top();
+  get_header();
+  show_breadcrumbs();
+  show_info_top();
 
-show_info_bottom();
-show_form();
-get_footer();
+  $qo=get_queried_object();
+  $paged = get_query_var('paged') ? get_query_var('paged') : (get_query_var('page') ? get_query_var('page') : 1);
+
+  query_posts(array(
+    'cat' => $qo->term_id,
+    'paged' => $paged
+  ));
+
+  if(have_posts()):
+    while(have_posts()): the_post(); ?>
+
+    <?php endwhile;
+    wp_pagenavi();
+  else:
+    echo '<p>Раздел не заполнен</p>';
+  endif;
+  show_form();
+  get_footer();

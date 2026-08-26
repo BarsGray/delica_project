@@ -325,7 +325,8 @@ function show_delivery_prev() { ?>
     </div>
   </div>
 <?php }
-function show_prod_card($query) {
+function show_prod_card($args) {
+  $query = new WP_Query($args);
   if ($query->have_posts()):
     while ($query->have_posts()): $query->the_post();
       $gallery = get_field('gallery'); ?>
@@ -372,5 +373,32 @@ function show_prod_card($query) {
         </div>
       </div>
     <?php endwhile;
-  endif;
+    wp_reset_postdata(); endif;
+}
+function show_product($args) {
+  $query = new WP_Query($args);
+  if($query->have_posts()): ?>
+      <div class="section_catalog_page">
+        <div class="container">
+          <p class="catalog_page_title">Продукция</p>
+          <ul class="catalog_tubs_row">
+            <li class="catalog_tub_item active"><a href="#">Бытовая продукция</a></li>
+            <li class="catalog_tub_item"><a href="#">Бумага-основа</a></li>
+            <li class="catalog_tub_item"><a href="#">Бумага для диспенсеров</a></li>
+            <li class="catalog_tub_item"><a href="#">Бумажные полотенца</a></li>
+          </ul>
+          <div class="catalog_box">
+            <?php while($query->have_posts()): $query->the_post(); ?>
+              <div class="catalog_item">
+                <a href="<?php the_permalink(); ?>">
+                  <div class="catalog_item_img"><img src="<?php the_post_thumbnail(); ?>" alt=""></div>
+                  <p class="catalog_item_name"><?php the_title(); ?></p>
+                  <div class="catalog_item_btn">Подробнее<?php echo SVG_PROD_ARRROW; ?></div>
+                </a>
+              </div>
+            <?php endwhile; ?>
+          </div>
+        </div>
+      </div>
+  <?php wp_reset_postdata(); endif;
 }
