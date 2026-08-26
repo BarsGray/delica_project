@@ -376,16 +376,26 @@ function show_prod_card($args) {
     wp_reset_postdata(); endif;
 }
 function show_product($args) {
+  
+  $cat_slug = isset($_GET['cat']) ? sanitize_text_field($_GET['cat']) : '';
+	if (!empty($cat_slug)) $args['tax_query'] = [array('taxonomy' => 'catalog', 'field' => 'slug', 'terms' => $cat_slug )];
+
   $query = new WP_Query($args);
+  
   if($query->have_posts()): ?>
       <div class="section_catalog_page">
         <div class="container">
           <p class="catalog_page_title">Продукция</p>
           <ul class="catalog_tubs_row">
-            <li class="catalog_tub_item active"><a href="#">Бытовая продукция</a></li>
-            <li class="catalog_tub_item"><a href="#">Бумага-основа</a></li>
-            <li class="catalog_tub_item"><a href="#">Бумага для диспенсеров</a></li>
-            <li class="catalog_tub_item"><a href="#">Бумажные полотенца</a></li>
+            <?php
+	          $selected_cat = get_queried_object()->slug;
+            $categories = get_terms(['taxonomy' => 'catalog', 'hide_empty' => false,]);
+
+            foreach ($categories as $category): ?>
+              <li class="catalog_tub_item<?php echo ($selected_cat == $category->slug) ? ' active' : ''; ?>">
+                <a href="<?php echo get_term_link($category); ?>"><?php echo esc_html($category->name); ?></a>
+              </li>
+			      <?php endforeach; ?>
           </ul>
           <div class="catalog_box">
             <?php while($query->have_posts()): $query->the_post(); ?>
