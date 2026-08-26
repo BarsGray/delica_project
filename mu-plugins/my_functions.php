@@ -22,8 +22,7 @@ add_theme_support('post-thumbnails');
 register_nav_menus();
 
 add_action('wp_enqueue_scripts', 'tehmonolit_th_scripts_style');
-function tehmonolit_th_scripts_style()
-{
+function tehmonolit_th_scripts_style() {
 	wp_enqueue_script('swiper', TEMPLATE_URL . '/js/swiper-bundle.min.js', array('jquery'), null, true);
 	wp_enqueue_script('fancybox', TEMPLATE_URL . '/js/fancybox.umd.js', array('jquery'), null, true);
 	wp_enqueue_script('main', TEMPLATE_URL . '/js/main.js', array('jquery'), _S_VERSION, true);
@@ -40,12 +39,11 @@ function tehmonolit_th_scripts_style()
 // }
 
 add_action('admin_head','admin_head');
-function admin_head(){
+function admin_head() {
 	echo '<style type="text/css">#wpwrap #edittag{max-width:100%;}.term-description-wrap{display:none;}</style>';
 }
 
-function breadcrumbs($sep = ' / ', $args = array(), $l10n = array())
-{
+function breadcrumbs($sep = ' / ', $args = array(), $l10n = array()) {
 	static $inst;
 	if (!$inst)
 		$inst = new Breadcrumbs();
@@ -78,8 +76,54 @@ function add_tax_custom($false,$linkpatt,$sep,$ptype,$q_obj){
 function merge_numbers($num) {
   return str_replace([' ', '-', '(', ')'],'',(string) ($num ?? ''));
 }
-function register_service()
-{
+function register_orion_content() {
+	$post_labels = array(
+		'name' => 'Продукция',
+		'singular_name' => 'Продукт',
+		'add_new' => 'Добавить',
+		'add_new_item' => 'Добавить продукт',
+		'edit_item' => 'Редактировать',
+		'menu_name' => 'Продукция'
+	);
+
+	$post_args = array(
+		'labels' => $post_labels,
+		'public' => true,
+		'show_ui' => true,
+		'has_archive' => 'product',
+		'menu_position' => 5,
+		'menu_icon' => 'dashicons-clipboard',
+		'supports' => array('title', 'editor', 'thumbnail'),
+		'rewrite' => array('slug' => 'product'),
+		'show_in_rest' => true,
+		'capability_type' => 'post',
+		'taxonomies' => array('catalog'),
+	);
+
+	register_post_type('product', $post_args);
+	$tax_labels = array(
+		'name' => 'Категории',
+		'singular_name' => 'Категория',
+		'menu_name' => 'Категории',
+		'all_items' => 'Все категории',
+		'add_new_item' => 'Добавить новую категорию',
+		'edit_item' => 'Изменить категорию',
+	);
+
+	$tax_args = array(
+		'hierarchical' => true,
+		'labels' => $tax_labels,
+		'show_ui' => true,
+		'show_admin_column' => true,
+		'query_var' => true,
+		'rewrite' => array('slug' => 'catalog'),
+		'show_in_rest' => true,
+	);
+
+	register_taxonomy('catalog', array('product'), $tax_args);
+}
+add_action('init', 'register_orion_content');
+function register_service() {
 	$post_labels = array(
 		'name' => 'Услуги',
 		'singular_name' => 'Услуга',
@@ -104,3 +148,29 @@ function register_service()
 	register_post_type('service', $post_args);
 }
 add_action('init', 'register_service');
+function register_oborudovanie() {
+	$post_labels = array(
+		'name' => 'Оборудование',
+		'singular_name' => 'Оборудование',
+		'add_new' => 'Добавить',
+		// 'featured_image'   => 'Основное фото',
+		'add_new_item' => 'Добавить',
+		'edit_item' => 'Редактировать',
+		'menu_name' => 'Оборудование'
+	);
+
+	$post_args = array(
+		'labels' => $post_labels,
+		'public' => false,
+		'show_ui' => true,
+		'has_archive' => false,
+		'menu_position' => 6,
+		'menu_icon' => 'dashicons-hammer',
+		'supports' => array('title'),
+		'show_in_rest' => true,
+		'capability_type' => 'post',
+	);
+
+	register_post_type('oborudovanie', $post_args);
+}
+add_action('init', 'register_oborudovanie');

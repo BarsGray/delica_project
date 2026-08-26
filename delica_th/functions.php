@@ -83,10 +83,8 @@ function show_contacts_page() { ?>
                   if (!$vid_svazi_value) continue;
                   $vid_svazi = $item['vid_svazi']['value'];
                   $href = '';
-
                   if ($vid_svazi === 'tel_fax' || $vid_svazi === 'tel') $href = 'tel:';
                   elseif ($vid_svazi === 'mail') $href = 'mailto:'; ?>
-
                   <div class="contacts_box_field">
                     <p class="contacts_field_title"><?php echo $item['vid_svazi']['label']; ?></p>
                     <a href="<?php echo $href . merge_numbers($vid_svazi_value); ?>" class="contacts_field_value"><?php echo $vid_svazi_value; ?></a>
@@ -163,7 +161,7 @@ function show_info_top() {
 function show_info_bottom() {
   $info_bottom_blok = get_field('info_bottom_blok');
   if(!empty($info_bottom_blok) && is_array($info_bottom_blok)): ?>
-    <div class="section_inform_box">
+    <div class="section_inform_box inform_box_bottom">
       <div class="container">
         <?php foreach($info_bottom_blok as $info_bottom_blok_item): ?>
           <div class="inform_inner">
@@ -246,4 +244,133 @@ function show_about_advantages() {
       </div>
     </div>
   <?php endif;
+}
+function show_why_us_advantages() {
+  $offers_advantages = get_field('offers_advantages');
+  if(!empty($offers_advantages) && is_array($offers_advantages)): ?>
+    <div class="section_why_us">
+      <div class="container">
+        <?php if($offers_advantages_main_title = get_field('offers_advantages_main_title')): ?>
+          <p class="why_us_title"><?php echo $offers_advantages_main_title; ?></p>
+        <?php endif; ?>
+        <div class="items_box">
+          <?php foreach($offers_advantages as $item): ?>
+            <div class="why_us_item">
+              <?php if($item['offers_advantages_icon']): ?>
+                <span class="img" style="background-image: url('<?php echo $item['offers_advantages_icon'];?>');"></span>
+              <?php endif; ?>
+              <?php if($item['offers_advantages_title']): ?>
+                <p class="title"><?php echo $item['offers_advantages_title']; ?></p>
+              <?php endif; ?>
+              <?php if($item['offers_advantages_text']): ?>
+                <p class="text"><?php echo $item['offers_advantages_text']; ?></p>
+              <?php endif; ?>
+            </div>
+          <?php endforeach; ?>
+        </div>
+      </div>
+    </div>
+  <?php endif;
+}
+
+function show_accept_any() { ?>
+  <div class="section_accept_any">
+    <div class="container">
+      <div class="any_inner">
+        <p class="any_title">Принимаем любые виды макулатуры от категории А до В</p>
+        <div class="any_cat">
+          <p class="any_cat_top any_cat_a">Категория А</p>
+          <p class="any_cat_bottom">Белая бумага, печатные материалы, чертежи, блокноты, тетради, плакаты — всё это ценится максимально. При грамотной сортировке вы получаете существенную прибыль.</p>
+        </div>
+        <div class="any_cat">
+          <p class="any_cat_top any_cat_b">Категория Б и В</p>
+          <p class="any_cat_bottom">Гофрокартон ММС‑5Б, печатный картон МС 6Б, втулки — это макулатура категорий Б и В. Принимаем всё это на переработку и отправляем во вторичное использование.</p>
+        </div>
+        <div class="any_bottom_row">
+          <p class="any_bottom_row_title">Экологическая проблема современности</p>
+          <p class="any_bottom_row_text">Бумажные отходы переполняют свалки, при разложении выделяют метан (в 25 раз активнее CO₂). Переработка макулатуры — реальный способ снизить вред. Каждая тонна переработанной бумаги спасает деревья и уменьшает загрязнение.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<?php }
+function show_delivery_prev() { ?>
+  <div class="section_delivery_prev">
+    <div class="container">
+      <div class="delivery_prev_inner">
+        <div class="delivery_prev_left">
+          <p class="delivery_prev_title">Быстрота и география поставок</p>
+          <p class="delivery_prev_alert">Доставка в любой регион РФ и СНГ</p>
+          <p class="delivery_prev_text">Отсутствие территориальных ограничений — важнейший плюс современного производителя. Мы доставляем заказы в любой населённый пункт РФ и соседних государств. Чёткий график, собственный автопарк и партнёрские логистические хабы.</p>
+        </div>
+        <div class="delivery_prev_right"></div>
+      </div>
+      <div class="delivery_items">
+        <div class="delivery_item">
+          <span class="delivery_items_icon icon_1"></span>
+          <p class="delivery_item_titel">Квалифицированные кадры</p>
+          <p class="delivery_item_text">Опытные водители с большим стажем, сплочённый коллектив, отсутствие текучки. Надёжность и профессионализм.</p>
+        </div>
+        <div class="delivery_item">
+          <span class="delivery_items_icon icon_2"></span>
+          <p class="delivery_item_titel">Квалифицированные кадры</p>
+          <p class="delivery_item_text">Опытные водители с большим стажем, сплочённый коллектив, отсутствие текучки. Надёжность и профессионализм.</p>
+        </div>
+        <div class="delivery_item">
+          <span class="delivery_items_icon icon_3"></span>
+          <p class="delivery_item_titel">Квалифицированные кадры</p>
+          <p class="delivery_item_text">Опытные водители с большим стажем, сплочённый коллектив, отсутствие текучки. Надёжность и профессионализм.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<?php }
+function show_prod_card($query) {
+  if ($query->have_posts()):
+    while ($query->have_posts()): $query->the_post();
+      $gallery = get_field('gallery'); ?>
+      <div class="section_product">
+        <div class="container">
+          <div class="product_box">
+            <?php if(!empty($gallery) && is_array($gallery)): ?>
+              <div class="product_gallery">
+                <div class="product_main_slider">
+                  <div class="swiper-wrapper">
+                      <?php foreach($gallery as $item): ?>
+                        <div class="swiper-slide"><a href="<?php echo $item['url'] ?>"><img src="<?php echo $item['url'] ?>" alt="<?php echo $item['alt'] ?>"></a></div>
+                      <?php endforeach; ?>
+                  </div>
+                </div>
+                <div class="product_thumb_slider">
+                  <div class="swiper-wrapper">
+                    <?php foreach($gallery as $item): ?>
+                      <div class="swiper-slide"><img src="<?php echo $item['sizes']['thumbnail'] ?>" alt="<?php echo $item['alt'] ?>"></div>
+                    <?php endforeach; ?>
+                  </div>
+                </div>
+              </div>
+            <?php endif; ?>
+            <div class="product_box_info">
+              <div class="info">
+                <p class="title"><?php the_title(); ?></p>
+                <?php if($params = get_field('params')): ?>
+                  <ul class="params_list">
+                    <?php foreach($params as $param): ?>
+                      <li class="params_item">
+                        <p>
+                          <?php if($param['param']): ?><span class="param_name"><?php echo $param['param']; ?></span><?php endif; ?>
+                          <?php if($param['value']): ?><span class="param_value"><?php echo $param['value']; ?></span><?php endif; ?>
+                        </p>
+                      </li>
+                    <?php endforeach; ?>
+                  </ul>
+                <?php endif; ?>
+              </div>
+              <a class="main_btn_2" href="#">Запросить стоимость</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <?php endwhile;
+  endif;
 }

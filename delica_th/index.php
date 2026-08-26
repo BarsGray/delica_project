@@ -85,22 +85,26 @@
         <p class="services_text">Мы делимся своим опытом и мощностями: помогаем выгодно поставлять сырьё, безопасно уничтожать документацию, обновлять парк оборудования и налаживать логистику</p>
       </div>
       <div class="services_box">
-        <a href="#" class="services_item item_1">
+        <a href="#" class="services_item">
+          <span class="services_item_icon" style="background-image: url('<?php bloginfo('template_url');?>/img/services_item_1.svg');"></span>
           <p class="services_item_title">Покупка макулатуры</p>
           <p class="services_item_text">Закупка макулатуры и картона. Оплата своевременно.</p>
           <p class="services_item_btn">Подробнее<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.6 3.60254L10.2905 7.29309C10.6811 7.68361 10.6811 8.31678 10.2905 8.7073L6.6 12.3979" stroke="#929292" stroke-width="2"/></svg></p>
         </a>
         <a href="#" class="services_item item_2">
+          <span class="services_item_icon" style="background-image: url('<?php bloginfo('template_url');?>/img/services_item_2.svg');"></span>
           <p class="services_item_title">Утилизация документов</p>
           <p class="services_item_text">Конфиденциально, с выдачей актов утилизации.</p>
           <p class="services_item_btn">Подробнее<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.6 3.60254L10.2905 7.29309C10.6811 7.68361 10.6811 8.31678 10.2905 8.7073L6.6 12.3979" stroke="#929292" stroke-width="2"/></svg></p>
         </a>
         <a href="#" class="services_item item_3">
+          <span class="services_item_icon" style="background-image: url('<?php bloginfo('template_url');?>/img/services_item_3.svg');"></span>
           <p class="services_item_title">Продажа оборудования</p>
           <p class="services_item_text">Продажа станков нарезки и упаковки бумажной продукции.</p>
           <p class="services_item_btn">Подробнее<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.6 3.60254L10.2905 7.29309C10.6811 7.68361 10.6811 8.31678 10.2905 8.7073L6.6 12.3979" stroke="#929292" stroke-width="2"/></svg></p>
         </a>
         <a href="#" class="services_item item_4">
+          <span class="services_item_icon" style="background-image: url('<?php bloginfo('template_url');?>/img/services_item_4.svg');"></span>
           <p class="services_item_title">Грузовые перевозки</p>
           <p class="services_item_text">Организация грузоперевозок сырья и готовой продукции.</p>
           <p class="services_item_btn">Подробнее<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.6 3.60254L10.2905 7.29309C10.6811 7.68361 10.6811 8.31678 10.2905 8.7073L6.6 12.3979" stroke="#929292" stroke-width="2"/></svg></p>
