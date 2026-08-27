@@ -271,7 +271,6 @@ function show_why_us_advantages() {
     </div>
   <?php endif;
 }
-
 function show_accept_any() { ?>
   <div class="section_accept_any">
     <div class="container">
@@ -374,15 +373,14 @@ function show_prod_card($args) {
     <?php endwhile;
     wp_reset_postdata(); endif;
 }
-
 function show_product($args) {
-  
   $term = get_queried_object();
   $selected_cat = '';
   if ($term instanceof WP_Term && $term->taxonomy === 'catalog') {
     $args['tax_query'] = [['taxonomy' => 'catalog','field' => 'term_id','terms' => $term->term_id,]];
     $selected_cat = $term->slug;
   }
+  $args['paged'] = get_query_var('paged') ?: 1;
 
   $query = new WP_Query($args);
   
@@ -421,5 +419,7 @@ function show_product($args) {
         </div>
       </div>
     </div>
-  <?php wp_reset_postdata(); endif;
+  <?php wp_reset_postdata();
+  wp_pagenavi(['query' => $query]);
+  endif;
 }

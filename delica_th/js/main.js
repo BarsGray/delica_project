@@ -161,17 +161,17 @@ jQuery(function ($) {
   Fancybox.bind('.foto_slider_on_main [data-fancybox="gallery_foto_slider"]', galleryParams);
 
   // ======================= tubs =======================
-//   const tubs_row = document.querySelector('.catalog_tubs_row');
+  //   const tubs_row = document.querySelector('.catalog_tubs_row');
 
-//   if (tubs_row) {
-//     const activeTab = tubs_row.querySelector('.active');
+  //   if (tubs_row) {
+  //     const activeTab = tubs_row.querySelector('.active');
 
-//     tubs_row.addEventListener('wheel', (e) => {
-//       e.preventDefault();
-//       const direction = e.deltaY > 0 ? 1 : -1;
-//       const scrollStep = 200;
+  //     tubs_row.addEventListener('wheel', (e) => {
+  //       e.preventDefault();
+  //       const direction = e.deltaY > 0 ? 1 : -1;
+  //       const scrollStep = 200;
 
-//       tubs_row.scrollBy({ left: direction * scrollStep, behavior: 'smooth' });
-//     }, { passive: false });
-//   }
+  //       tubs_row.scrollBy({ left: direction * scrollStep, behavior: 'smooth' });
+  //     }, { passive: false });
+  //   }
 });

@@ -151,7 +151,6 @@ function register_oborudovanie() {
 		'name' => 'Оборудование',
 		'singular_name' => 'Оборудование',
 		'add_new' => 'Добавить',
-		// 'featured_image'   => 'Основное фото',
 		'add_new_item' => 'Добавить',
 		'edit_item' => 'Редактировать',
 		'menu_name' => 'Оборудование'
