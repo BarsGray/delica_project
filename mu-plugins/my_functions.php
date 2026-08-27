@@ -73,11 +73,7 @@ function add_tax_custom($false,$linkpatt,$sep,$ptype,$q_obj){
 		}
 	}
 }
-
-
-function merge_numbers($num) {
-  return str_replace([' ', '-', '(', ')'],'',(string) ($num ?? ''));
-}
+function merge_numbers($num) {return str_replace([' ', '-', '(', ')'],'',(string) ($num ?? ''));}
 function register_orion_content() {
 	$post_labels = array(
 		'name' => 'Продукция',
@@ -176,3 +172,9 @@ function register_oborudovanie() {
 	register_post_type('oborudovanie', $post_args);
 }
 add_action('init', 'register_oborudovanie');
+
+add_action('save_post_product', function ($post_id, $post, $update) {
+	if ($update) {return;}
+	$category_id = 4;
+	wp_set_post_terms($post_id,[$category_id],'catalog');
+}, 10, 3);

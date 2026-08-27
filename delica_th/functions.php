@@ -20,7 +20,6 @@ function show_zag() {
 }
 function title_def_box() {
   $text_btn = get_field('text_btn');
-  $link_btn = get_field('link_btn');
   ?>
   <div class="section_title_def_box">
     <div class="container">
@@ -33,8 +32,8 @@ function title_def_box() {
       <?php if($thumbnail_url = get_the_post_thumbnail_url()): ?>
         <div class="img" style="background-image: url('<?php echo $thumbnail_url; ?>')"></div>
       <?php endif; ?>
-      <?php if($text_btn && $link_btn): ?>
-        <a class="link main_btn_2" href="<?php echo $link_btn; ?>"><?php echo $text_btn; ?></a>
+      <?php if($text_btn): ?>
+        <a class="link main_btn_2"><?php echo $text_btn; ?></a>
       <?php endif; ?>
     </div>
   </div>
@@ -375,40 +374,52 @@ function show_prod_card($args) {
     <?php endwhile;
     wp_reset_postdata(); endif;
 }
+
 function show_product($args) {
   
-  $cat_slug = isset($_GET['cat']) ? sanitize_text_field($_GET['cat']) : '';
-	if (!empty($cat_slug)) $args['tax_query'] = [array('taxonomy' => 'catalog', 'field' => 'slug', 'terms' => $cat_slug )];
+  $term = get_queried_object();
+  $selected_cat = '';
+  if ($term instanceof WP_Term && $term->taxonomy === 'catalog') {
+    $args['tax_query'] = [['taxonomy' => 'catalog','field' => 'term_id','terms' => $term->term_id,]];
+    $selected_cat = $term->slug;
+  }
 
   $query = new WP_Query($args);
   
   if($query->have_posts()): ?>
-      <div class="section_catalog_page">
-        <div class="container">
-          <p class="catalog_page_title">Продукция</p>
-          <ul class="catalog_tubs_row">
-            <?php
-	          $selected_cat = get_queried_object()->slug;
-            $categories = get_terms(['taxonomy' => 'catalog', 'hide_empty' => false,]);
+    <div class="section_catalog_page">
+      <div class="container">
+        <p class="catalog_page_title">Продукция</p>
+        <ul class="catalog_tubs_row">
+          <?php $categories = get_terms(['taxonomy' => 'catalog', 'hide_empty' => true]);
+                $general_cat = get_term(4, 'catalog');
 
-            foreach ($categories as $category): ?>
-              <li class="catalog_tub_item<?php echo ($selected_cat == $category->slug) ? ' active' : ''; ?>">
-                <a href="<?php echo get_term_link($category); ?>"><?php echo esc_html($category->name); ?></a>
-              </li>
-			      <?php endforeach; ?>
-          </ul>
-          <div class="catalog_box">
-            <?php while($query->have_posts()): $query->the_post(); ?>
-              <div class="catalog_item">
-                <a href="<?php the_permalink(); ?>">
-                  <div class="catalog_item_img"><img src="<?php the_post_thumbnail(); ?>" alt=""></div>
-                  <p class="catalog_item_name"><?php the_title(); ?></p>
-                  <div class="catalog_item_btn">Подробнее<?php echo SVG_PROD_ARRROW; ?></div>
-                </a>
-              </div>
-            <?php endwhile; ?>
-          </div>
+          if ($general_cat && !is_wp_error($general_cat)): ?>
+            <li class="catalog_tub_item<?php echo ($selected_cat === '' ? ' active' : ''); ?>">
+              <a href="<?php echo esc_url(get_permalink(12)); ?>"><?php echo esc_html($general_cat->name); ?></a>
+            </li>
+          <?php endif;
+
+          foreach ($categories as $category):
+            if($category->term_id === 4) continue; ?>
+            <li class="catalog_tub_item<?php echo ($selected_cat == $category->slug) ? ' active' : ''; ?>">
+              <a href="<?php echo esc_url(get_term_link($category)); ?>"><?php echo esc_html($category->name); ?></a>
+            </li>
+          <?php endforeach; ?>
+          
+        </ul>
+        <div class="catalog_box">
+          <?php while($query->have_posts()): $query->the_post(); ?>
+            <div class="catalog_item">
+              <a href="<?php the_permalink(); ?>">
+                <div class="catalog_item_img"><?php the_post_thumbnail(); ?></div>
+                <p class="catalog_item_name"><?php the_title(); ?></p>
+                <div class="catalog_item_btn">Подробнее<?php echo SVG_PROD_ARRROW; ?></div>
+              </a>
+            </div>
+          <?php endwhile; ?>
         </div>
       </div>
+    </div>
   <?php wp_reset_postdata(); endif;
 }
