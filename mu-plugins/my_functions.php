@@ -74,7 +74,7 @@ function add_tax_custom($false,$linkpatt,$sep,$ptype,$q_obj){
 	}
 }
 function merge_numbers($num) {return str_replace([' ', '-', '(', ')'],'',(string) ($num ?? ''));}
-function register_orion_content() {
+function register_product() {
 	$post_labels = array(
 		'name' => 'Продукция',
 		'singular_name' => 'Продукт',
@@ -120,7 +120,7 @@ function register_orion_content() {
 
 	register_taxonomy('catalog', array('product'), $tax_args);
 }
-add_action('init', 'register_orion_content');
+add_action('init', 'register_product');
 function register_service() {
 	$post_labels = array(
 		'name' => 'Услуги',

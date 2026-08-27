@@ -263,7 +263,7 @@ body {
   line-height: 1.5;
   transition: color .2s ease-in-out;
 }
-.header_menu .current_page_item a,.header_menu li a:active {color: var(--akcent_color_hover);}
+.header_menu .current-menu-item a,.header_menu li a:active {color: var(--akcent_color_hover);}
 .main_btn {
   padding: 10px 24px;
   line-height: 1.5;
