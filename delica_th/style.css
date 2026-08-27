@@ -2017,3 +2017,53 @@ h6,.h6 {font-size: 44px;}
 }
 @media (max-width:610px) {.inform_inner ol,.inform_inner ul,.inform_list {font-size: 15px;}}
 /* ============================== content ======================================================= */
+/* ============================== Wp-pagenavi ======================================================= */
+.wp-pagenavi {
+	display: flex;
+	gap: 12px;
+	justify-content: center;
+	padding-top: 40px;
+}
+.wp-pagenavi a.page:hover, .wp-pagenavi span.current {
+	background-color: var(--akcent_color_hover);
+	color: #fff;
+  border-color: var(--akcent_color_hover);
+}
+.wp-pagenavi span, .wp-pagenavi a {
+	width: 34px;
+	height: 34px;
+	border-radius: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all .3s ease-in-out;
+  color: #353535;
+  overflow: hidden;
+  border: 1px solid #D7D7D7;
+}
+.wp-pagenavi a.nextpostslink, .wp-pagenavi a.previouspostslink {
+  border: 2px solid #D7D7D7;
+	position: relative;
+}
+.wp-pagenavi a.nextpostslink:hover, .wp-pagenavi a.previouspostslink:hover {border-color: var(--akcent_color_hover);}
+.wp-pagenavi a.nextpostslink:hover::after, .wp-pagenavi a.previouspostslink:hover::after {opacity: 1;}
+.wp-pagenavi a.nextpostslink::after, .wp-pagenavi a.previouspostslink::after{opacity: 0;}
+
+.wp-pagenavi a.nextpostslink::after, .wp-pagenavi a.previouspostslink::after,
+.wp-pagenavi a.nextpostslink::before, .wp-pagenavi a.previouspostslink::before {
+	content: "";
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #F2F2F2;
+	transition: all .3s ease-in-out;
+}
+
+.wp-pagenavi a.nextpostslink::before {background: url('img/bun_btn_next_dis.svg') no-repeat center center #F2F2F2;}
+.wp-pagenavi a.previouspostslink::before {background: url("img/bun_btn_prev_dis.svg") center center no-repeat #F2F2F2;}
+.wp-pagenavi a.nextpostslink::after {background: url('img/bun_btn_next.svg') no-repeat center center #F2F2F2;}
+.wp-pagenavi a.previouspostslink::after {background: url("img/bun_btn_prev.svg") center center no-repeat #F2F2F2;}
+/* ============================== Wp-pagenavi ======================================================= */

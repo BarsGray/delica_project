@@ -374,13 +374,13 @@ function show_prod_card($args) {
     wp_reset_postdata(); endif;
 }
 function show_product($args) {
+  
   $term = get_queried_object();
   $selected_cat = '';
   if ($term instanceof WP_Term && $term->taxonomy === 'catalog') {
     $args['tax_query'] = [['taxonomy' => 'catalog','field' => 'term_id','terms' => $term->term_id,]];
     $selected_cat = $term->slug;
   }
-  $args['paged'] = get_query_var('paged') ?: 1;
 
   $query = new WP_Query($args);
   
@@ -393,8 +393,8 @@ function show_product($args) {
                 $general_cat = get_term(4, 'catalog');
 
           if ($general_cat && !is_wp_error($general_cat)): ?>
-            <li class="catalog_tub_item<?php echo ($selected_cat === '' ? ' active' : ''); ?>">
-              <a href="<?php echo esc_url(get_permalink(12)); ?>"><?php echo esc_html($general_cat->name); ?></a>
+            <li class="catalog_tub_item<?php echo ($selected_cat === $general_cat->slug ? ' active' : ''); ?>">
+              <a href="<?php echo esc_url(get_term_link($general_cat)); ?>"><?php echo esc_html($general_cat->name); ?></a>
             </li>
           <?php endif;
 
@@ -417,9 +417,40 @@ function show_product($args) {
             </div>
           <?php endwhile; ?>
         </div>
+        <?php wp_pagenavi(['query' => $query]);
+        wp_reset_postdata(); ?>
       </div>
     </div>
-  <?php wp_reset_postdata();
-  wp_pagenavi(['query' => $query]);
-  endif;
+  <?php endif;
 }
+function show_slider_prod() {
+  $query = new WP_Query(['post_type' => 'product', 'posts_per_page' => -1]);
+  
+  if($query->have_posts()): ?>
+      <div class="section_other_prod_slider">
+        <div class="container">
+          <div class="other_prod_slider_header">
+            <p class="other_prod_slider_title">Другая продукция</p>
+            <div class="other_prod_slider_btns ">
+              <a class="other_prod_slider_btn_prev"></a>
+              <a class="other_prod_slider_btn_next"></a>
+            </div>
+            <a href="<?php echo esc_url(get_permalink(12)); ?>" class="other_prod_slider_link_more">Смотреть всё</a>
+          </div>
+          <div class="swiper other_prod_slider">
+            <div class="swiper-wrapper">
+              <?php while($query->have_posts()): $query->the_post(); ?>
+                <div class="swiper-slide other_prod_slider_item">
+                  <a href="<?php the_permalink(); ?>">
+                    <div class="other_prod_slider_img"><?php the_post_thumbnail(); ?></div>
+                    <p class="other_prod_slider_name_prod"><?php the_title(); ?></p>
+                  </a>
+                </div>
+              <?php endwhile; ?>
+            </div>
+          </div>
+          <div class="swiper-scrollbar"></div>
+        </div>
+      </div>
+  <?php endif; ?>
+<?php }
