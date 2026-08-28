@@ -323,55 +323,75 @@ function show_delivery_prev() { ?>
     </div>
   </div>
 <?php }
-function show_prod_card($args) {
+function show_prod() {
+  $gallery = get_field('gallery');
+  $has_thumbnail = has_post_thumbnail();
+  $has_gallery = !empty($gallery) && is_array($gallery);
+  ?>
+  <div class="section_product">
+    <div class="container">
+      <div class="product_box">
+        <div class="product_gallery">
+          <?php if($has_gallery || $has_thumbnail): ?>
+            <div class="product_main_slider">
+              <div class="swiper-wrapper">
+                <?php if(has_post_thumbnail()): ?>
+                  <div class="swiper-slide"><a href="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>"><?php the_post_thumbnail(); ?></a></div>
+                <?php endif; ?>
+                <?php if($has_gallery):
+                  foreach($gallery as $item): ?>
+                    <div class="swiper-slide"><a href="<?php echo $item['url']; ?>"><img src="<?php echo $item['url']; ?>" alt="<?php echo $item['alt']; ?>"></a></div>
+                  <?php endforeach;
+                endif; ?>
+              </div>
+            </div>
+            <div class="product_thumb_slider">
+              <div class="swiper-wrapper">
+                <?php if(has_post_thumbnail()): ?>
+                  <div class="swiper-slide"><?php the_post_thumbnail('thumbnail'); ?></div>
+                <?php endif;
+                if($has_gallery):
+                  foreach($gallery as $item): ?>
+                  <div class="swiper-slide"><img src="<?php echo $item['sizes']['thumbnail']; ?>" alt="<?php echo $item['alt']; ?>"></div>
+                  <?php endforeach;
+                endif; ?>
+              </div>
+            </div>
+          <?php else: ?>
+            <div class="product_main_slider"><div class="swiper-wrapper"><div class="swiper-slide slide_def"><img src="<?php echo get_template_directory_uri() . '/img/istockphoto.jpg'; ?>" alt="Нет фото"></div></div></div>
+            <div class="product_thumb_slider"><div class="swiper-wrapper"></div></div>
+          <?php endif;?>
+        </div>
+        <div class="product_box_info">
+          <div class="info">
+            <p class="title"><?php the_title(); ?></p>
+            <?php if($params = get_field('params')): ?>
+              <ul class="params_list">
+                <?php foreach($params as $param): ?>
+                  <li class="params_item">
+                    <p>
+                      <?php if($param['param']): ?><span class="param_name"><?php echo $param['param']; ?></span><?php endif; ?>
+                      <?php if($param['value']): ?><span class="param_value"><?php echo $param['value']; ?></span><?php endif; ?>
+                    </p>
+                  </li>
+                <?php endforeach; ?>
+              </ul>
+            <?php endif; ?>
+          </div>
+          <a class="main_btn_2" href="#">Запросить стоимость</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<?php }
+function show_prod_cards($args) {
   $query = new WP_Query($args);
   if ($query->have_posts()):
     while ($query->have_posts()): $query->the_post();
-      $gallery = get_field('gallery'); ?>
-      <div class="section_product">
-        <div class="container">
-          <div class="product_box">
-            <?php if(!empty($gallery) && is_array($gallery)): ?>
-              <div class="product_gallery">
-                <div class="product_main_slider">
-                  <div class="swiper-wrapper">
-                      <?php foreach($gallery as $item): ?>
-                        <div class="swiper-slide"><a href="<?php echo $item['url'] ?>"><img src="<?php echo $item['url'] ?>" alt="<?php echo $item['alt'] ?>"></a></div>
-                      <?php endforeach; ?>
-                  </div>
-                </div>
-                <div class="product_thumb_slider">
-                  <div class="swiper-wrapper">
-                    <?php foreach($gallery as $item): ?>
-                      <div class="swiper-slide"><img src="<?php echo $item['sizes']['thumbnail'] ?>" alt="<?php echo $item['alt'] ?>"></div>
-                    <?php endforeach; ?>
-                  </div>
-                </div>
-              </div>
-            <?php endif; ?>
-            <div class="product_box_info">
-              <div class="info">
-                <p class="title"><?php the_title(); ?></p>
-                <?php if($params = get_field('params')): ?>
-                  <ul class="params_list">
-                    <?php foreach($params as $param): ?>
-                      <li class="params_item">
-                        <p>
-                          <?php if($param['param']): ?><span class="param_name"><?php echo $param['param']; ?></span><?php endif; ?>
-                          <?php if($param['value']): ?><span class="param_value"><?php echo $param['value']; ?></span><?php endif; ?>
-                        </p>
-                      </li>
-                    <?php endforeach; ?>
-                  </ul>
-                <?php endif; ?>
-              </div>
-              <a class="main_btn_2" href="#">Запросить стоимость</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    <?php endwhile;
-    wp_reset_postdata(); endif;
+      show_prod();
+    endwhile;
+    wp_reset_postdata();
+  endif;
 }
 function show_category() {
   $selected_cat = get_queried_object()->slug ?? '';
@@ -452,5 +472,7 @@ function show_slider_prod() {
           <div class="swiper-scrollbar"></div>
         </div>
       </div>
-  <?php endif; ?>
+  <?php 
+  wp_reset_postdata();
+  endif; ?>
 <?php }
