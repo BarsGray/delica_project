@@ -973,7 +973,7 @@ input[type="checkbox"]:checked + span::before {background-color: var(--akcent_co
 .foto_slider_container {overflow: hidden;max-width: 4050px;margin: 0 auto;}
 .foto_slider {max-width: 1320px; overflow: visible;position: relative;padding: 0 var(--container_padding);}
 .foto_slider_item {border-radius: 20px;overflow: hidden;opacity: .4;transition: opacity .3s ease-in-out .1s;}
-/* .swiper-slide-active{opacity: 1;transition: opacity .3s ease-in-out .1s;} */
+.swiper-slide-active{opacity: 1;transition: opacity .3s ease-in-out .1s;}
 .foto_slider_on_main .btn_prev,.foto_slider_on_main .btn_next {
   position: absolute;
   top: 50%;
