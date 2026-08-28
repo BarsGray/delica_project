@@ -392,7 +392,17 @@ function show_category() {
     </li>
   <?php endforeach;
 }
-function show_product($args) {
+function show_prod_on_catalog() { ?>
+  <div class="catalog_item">
+    <a href="<?php the_permalink(); ?>">
+      <div class="catalog_item_img"><?php the_post_thumbnail(); ?></div>
+      <p class="catalog_item_name"><?php the_title(); ?></p>
+      <div class="catalog_item_btn">Подробнее<?php echo SVG_PROD_ARRROW; ?></div>
+    </a>
+  </div>
+<?php }
+function show_catalog() {
+  $args = ['post_type' => 'product', 'posts_per_page' => get_option('posts_per_page'), 'paged' => get_query_var('paged') ?: 1];
   $query = new WP_Query($args);
   
   if($query->have_posts()): ?>
@@ -403,15 +413,9 @@ function show_product($args) {
           <?php show_category(); ?>
         </ul>
         <div class="catalog_box">
-          <?php while($query->have_posts()): $query->the_post(); ?>
-            <div class="catalog_item">
-              <a href="<?php the_permalink(); ?>">
-                <div class="catalog_item_img"><?php the_post_thumbnail(); ?></div>
-                <p class="catalog_item_name"><?php the_title(); ?></p>
-                <div class="catalog_item_btn">Подробнее<?php echo SVG_PROD_ARRROW; ?></div>
-              </a>
-            </div>
-          <?php endwhile; ?>
+          <?php while($query->have_posts()): $query->the_post();
+            show_prod_on_catalog();
+          endwhile; ?>
         </div>
         <?php wp_pagenavi(['query' => $query]);
         wp_reset_postdata(); ?>
