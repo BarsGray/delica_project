@@ -373,15 +373,26 @@ function show_prod_card($args) {
     <?php endwhile;
     wp_reset_postdata(); endif;
 }
-function show_product($args) {
+function show_category() {
+  $selected_cat = get_queried_object()->slug ?? '';
   
-  $term = get_queried_object();
-  $selected_cat = '';
-  if ($term instanceof WP_Term && $term->taxonomy === 'catalog') {
-    $args['tax_query'] = [['taxonomy' => 'catalog','field' => 'term_id','terms' => $term->term_id,]];
-    $selected_cat = $term->slug;
-  }
+  $categories = get_terms(['taxonomy' => 'catalog', 'hide_empty' => true]);
+  $general_cat = get_term(4, 'catalog');
 
+  if ($general_cat && !is_wp_error($general_cat)): ?>
+    <li class="catalog_tub_item <?php echo ($selected_cat === $general_cat->slug ? ' active' : ''); ?>">
+      <a href="<?php echo esc_url(get_term_link($general_cat)); ?>"><?php echo esc_html($general_cat->name); ?></a>
+    </li>
+  <?php endif;
+
+  foreach ($categories as $category):
+    if($category->term_id === 4) continue; ?>
+    <li class="catalog_tub_item <?php echo ($selected_cat == $category->slug) ? ' active' : ''; ?>">
+      <a href="<?php echo esc_url(get_term_link($category)); ?>"><?php echo esc_html($category->name); ?></a>
+    </li>
+  <?php endforeach;
+}
+function show_product($args) {
   $query = new WP_Query($args);
   
   if($query->have_posts()): ?>
@@ -389,22 +400,7 @@ function show_product($args) {
       <div class="container">
         <p class="catalog_page_title">Продукция</p>
         <ul class="catalog_tubs_row">
-          <?php $categories = get_terms(['taxonomy' => 'catalog', 'hide_empty' => true]);
-                $general_cat = get_term(4, 'catalog');
-
-          if ($general_cat && !is_wp_error($general_cat)): ?>
-            <li class="catalog_tub_item<?php echo ($selected_cat === $general_cat->slug ? ' active' : ''); ?>">
-              <a href="<?php echo esc_url(get_term_link($general_cat)); ?>"><?php echo esc_html($general_cat->name); ?></a>
-            </li>
-          <?php endif;
-
-          foreach ($categories as $category):
-            if($category->term_id === 4) continue; ?>
-            <li class="catalog_tub_item<?php echo ($selected_cat == $category->slug) ? ' active' : ''; ?>">
-              <a href="<?php echo esc_url(get_term_link($category)); ?>"><?php echo esc_html($category->name); ?></a>
-            </li>
-          <?php endforeach; ?>
-          
+          <?php show_category(); ?>
         </ul>
         <div class="catalog_box">
           <?php while($query->have_posts()): $query->the_post(); ?>
