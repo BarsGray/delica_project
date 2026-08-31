@@ -39,6 +39,13 @@
       </div>
     </div>
   </footer>
+  <div id="popup_box" style="display:none;" class="popup_box">
+    <div class="top_box">
+      <p class="popup_title">Оставить заявку</p>
+      <p class="popup_text">Оставьте свои контакты и наш специалист перезвонит вам в ближайшее время.</p>
+    </div>
+    <?php echo do_shortcode('[contact-form-7 id="23aef55" title="Контактная форма"]'); ?>
+  </div>
   <?php wp_footer() ?>
 </body>
 </html>

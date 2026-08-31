@@ -16,7 +16,7 @@
           <?php if ($main_tel = get_field('main_tel', 25)): ?>
             <a href="tel:<?php echo merge_numbers($main_tel); ?>" class="main_number"><?php echo SVG_PHONE ?><span><?php echo $main_tel; ?></span></a>
           <?php endif; ?>
-          <a href="#" class="main_btn">Получить консультацию</a>
+          <a href="#popup_box" data-fancybox class="main_btn">Получить консультацию</a>
           <a href="#" class="menu_btn"><?php echo SVG_MENU_BTN; ?></a>
         </div>
       </div>

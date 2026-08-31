@@ -812,6 +812,7 @@ input[type="checkbox"]:checked + span::before {background-color: var(--akcent_co
   background-repeat: no-repeat;
 }
 .section_title_def_box .title {
+  --bunner_title: 70px;
   font-size: var(--bunner_title);
   line-height: 1;
   color: #353535;
@@ -973,7 +974,7 @@ input[type="checkbox"]:checked + span::before {background-color: var(--akcent_co
 .foto_slider_container {overflow: hidden;max-width: 4050px;margin: 0 auto;}
 .foto_slider {max-width: 1320px; overflow: visible;position: relative;padding: 0 var(--container_padding);}
 .foto_slider_item {border-radius: 20px;overflow: hidden;opacity: .4;transition: opacity .3s ease-in-out .1s;}
-.swiper-slide-active{opacity: 1;transition: opacity .3s ease-in-out .1s;}
+.swiper-slide-active{opacity: 1;transition: opacity .1s ease-in-out .1s;}
 .foto_slider_on_main .btn_prev,.foto_slider_on_main .btn_next {
   position: absolute;
   top: 50%;
@@ -1217,7 +1218,7 @@ input[type="checkbox"]:checked + span::before {background-color: var(--akcent_co
 }
 a.contacts_field_value:active {color: var(--akcent_color_hover);}
 .contacts_map {
-  padding: 50px var(--container_padding) 160px;
+  padding: 50px var(--container_padding) 80px;
   max-width: calc(1320px + var(--container_padding) * 2);
   margin: 0 auto;
 }
@@ -1523,6 +1524,7 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
 @media (max-width: 1100px) {
   .header.scroll {top: 0;}
   .header.scroll .header_top_row {opacity: 1;}
+  .section_title_def_box .title {--bunner_title: 58px;}
   :root {
     --bunner_title: 68px;
     --text_size_main_plus: 16px;
@@ -1655,7 +1657,7 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
   .contacts_adress {font-size: 22px;}
   .contacts_field_title{font-size: 14px;}
   .contacts_field_value{font-size: 14px;}
-  .contacts_map {padding: 20px var(--container_padding) 140px;}
+  .contacts_map {padding: 20px var(--container_padding) 70px;}
   .catalog_tubs_row {
     margin-left: calc(-1 * var(--container_padding));
     margin-right: calc(-1 * var(--container_padding));
@@ -1673,6 +1675,7 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
   .other_prod_slider_img {border-radius: 16px;}
 }
 @media (max-width: 920px) {
+  .section_title_def_box .title {--bunner_title: 48px;}
   :root {
     --container_padding: 20px;
     --main_title: 38px;
@@ -1779,6 +1782,7 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
   .product_box_info .title {margin-bottom: 12px;}
 }
 @media (max-width: 750px) {
+  .section_title_def_box .title {--bunner_title: 42px;}
   :root {
     --bunner_title: 42px;
     --text_size_main_plus: 15px;
@@ -1893,7 +1897,7 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
   .section_delivery_prev {padding: 50px 0;}
   .contacts_box_title {font-size: 24px;}
   .contacts_adress {font-size: 18px;}
-  .contacts_map {padding: 20px var(--container_padding) 100px;}
+  .contacts_map {padding: 20px var(--container_padding) 50px;}
   .contacts_map iframe {max-height: 278px;}
   .section_catalog_page {padding: 0 0 50px;}
   .section_catalog_page .title {margin-bottom: 30px;}
@@ -1988,7 +1992,7 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
 }
 /* ============================== content ======================================================= */
 .content_container {
-  padding: 0 var(--container_padding);
+  padding: 40px var(--container_padding) 40px;
   max-width: calc(1320px + var(--container_padding) * 2);
   margin: 0 auto;
 }
@@ -2051,19 +2055,20 @@ h6,.h6 {font-size: 44px;}
 .content_container img.aligncenter {display: block;margin-left: auto;margin-right: auto;margin-bottom: 10px;}
 
 /* ===================================== hide_content  =====================================*/
-.hide_text {transition: all 1s ease-in-out;max-height: 300px;height: fit-content;overflow: hidden;}
+.hide_text {transition: all .5s ease-in-out;max-height: 300px;height: fit-content;overflow: hidden;}
 .hide {position: relative;}
 .hide::after {
 	content: '';
 	position: absolute;
 	left: 0;
-	bottom: 35px;
+	bottom: 75px;
 	width: 100%;
 	height: 100px;
 	background: -webkit-linear-gradient(to bottom, rgba(255, 255, 255, 0), #F2F2F2);
 	background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #F2F2F2);
+	transition: all .5s ease-in-out;
 }
-.hide.active::after {display: none;}
+.hide.active::after {visibility: hidden;opacity: 0;}
 .more {margin-top: 20px;padding-right: 23px; display: block;transition: all .3s ease-in-out;cursor: pointer;color: var(--akcent_color_hover);width: fit-content;position: relative;}
 .more::after,
 .more::before {

@@ -160,33 +160,116 @@ jQuery(function ($) {
   });
   Fancybox.bind('.foto_slider_on_main [data-fancybox="gallery_foto_slider"]', galleryParams);
 
-  // ======================= show more content =======================
-	const hideContainer = document.querySelector('.hide');
-	const hideTextContainer = document.querySelector('.hide_text');
-	const btnMore = document.querySelector('.more');
+  // $('[data-fancybox]').fancybox( {buttons: []} );
 
-	if (btnMore) {
-		btnMore.addEventListener('click', () => {
-      hideContainer.classList.toggle('active');
-			hideTextContainer.classList.toggle('active');
+  Fancybox.bind('[data-fancybox]', {});
 
-			if (hideTextContainer.classList.contains('active')) {
-        hideTextContainer.setAttribute('style', 'max-height: '+hideTextContainer.scrollHeight+'px;');
-        
-				btnMore.innerHTML = 'Cвернуть';
-				btnMore.classList.add('active');
+  // ======================= validate input  =============
+	const allForms = document.querySelectorAll('.wpcf7-form');
+
+	allForms.forEach(form => {
+		const phoneInput = form.querySelector('input[type="tel"]');
+		const submitButton = form.querySelector('button[type="submit"]');
+		const checkbox = form.querySelector('input[type="checkbox"][name^="acceptance"]');
+
+		// деактивируем кнопку
+		submitButton.disabled = true;
+
+		checkbox.addEventListener('change', () => {
+			if (phoneInput.value.length == 18) { submitButton.disabled = !checkbox.checked; }
+		});
+
+		phoneInput.addEventListener('focus', () => {
+			if (!phoneInput.value) { phoneInput.value = '+7 '; }
+			if (phoneInput.value.length < 18) { phoneInput.classList.remove('wpcf7-not-valid'); }
+		});
+
+		phoneInput.addEventListener('blur', () => {
+			if (phoneInput.value === '+7 ') { phoneInput.value = ''; phoneInput.classList.remove('wpcf7-not-valid'); }
+			if (phoneInput.value.length < 18 && phoneInput.value.length > 3) { phoneInput.classList.add('wpcf7-not-valid'); }
+		});
+
+		phoneInput.addEventListener('input', (e) => {
+			let input = e.target.value.replace(/\D/g, '');
+			let formatted = '';
+
+			if (['7', '8', '9'].includes(input[0])) {
+				if (input[0] === '9') input = '7' + input;
+				input = input.substring(1);
+			}
+
+			formatted = '+7 ';
+
+			if (input.length > 0) { formatted += '(' + input.substring(0, 3); }
+			if (input.length >= 4) { formatted += ') ' + input.substring(3, 6); }
+			if (input.length >= 7) { formatted += '-' + input.substring(6, 8); }
+			if (input.length >= 9) { formatted += '-' + input.substring(8, 10); }
+
+			e.target.value = formatted;
+
+			// делаетм кнопку активной, не активной
+			if (phoneInput.value.length == 18 && checkbox.checked) {
+				submitButton.disabled = false;
 			} else {
-				btnMore.innerHTML = 'Подробнее';
-				btnMore.classList.remove('active');
-
-        hideTextContainer.setAttribute('style', 'max-height: 300px;');
+				submitButton.disabled = true;
 			}
 		});
-	}
+
+		phoneInput.addEventListener('keydown', (e) => {
+			if (e.target.value.length <= 4 && e.keyCode === 8) { e.preventDefault(); }
+		});
+
+		form.addEventListener('submit', (e) => {
+			if (phoneInput.value.length < 18) {
+				// alert('Пожалуйста, введите номер телефона полностью');
+				e.preventDefault();
+				phoneInput.classList.add('wpcf7-not-valid');
+				e.stopImmediatePropagation();
+				return false;
+			} else {
+				phoneInput.classList.remove('wpcf7-not-valid');
+			}
+		}, true);
+	});
+
+  // ======================= show more content =======================
+  document.querySelectorAll('.hide').forEach(hideContainer => {
+  const hideTextContainer = hideContainer.querySelector('.hide_text');
+  const btnMore = hideContainer.querySelector('.more');
+
+  if (!hideTextContainer || !btnMore) return;
+
+  if (hideTextContainer.scrollHeight > 300) {
+    hideTextContainer.style.maxHeight = '300px';
+
+    btnMore.addEventListener('click', () => {
+      const isActive = hideTextContainer.classList.toggle('active');
+      
+      hideContainer.classList.toggle('active', isActive);
+      btnMore.classList.toggle('active', isActive);
+      if (isActive) {
+        btnMore.textContent = 'Свернуть';
+				btnMore.classList.add('active');
+
+        hideTextContainer.style.maxHeight = hideTextContainer.scrollHeight + 'px';
+      } else {
+        btnMore.textContent = 'Подробнее';
+				btnMore.classList.remove('active');
+
+        hideTextContainer.style.maxHeight = '300px';
+      }
+    });
+  } else {
+    btnMore.style.display = 'none';
+    setTimeout(()=>{hideContainer.classList.remove('hide');},500);
+  }
+});
 	
 	// $('.gdpr > a').click(function(e){
 	// 	e.preventDefault();
 	// 	document.cookie='gdpr_site=gdpr;path=/;max-age=86400000';
 	// 	$(this).closest('.gdpr').remove();
 	// });
+
+
 });
