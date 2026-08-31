@@ -1223,7 +1223,7 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
 }
 .contacts_map iframe {max-height: 440px;width: 100%;}
 .section_catalog_page {padding: 0 0 70px;}
-.catalog_page_title {
+.section_catalog_page .title {
   font-size: var(--bunner_title);
   color: #353535;
   font-family: 'AlumniSans';
@@ -1435,6 +1435,51 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
   margin-top: 20px;
   display: none;
 }
+.category_page_item {
+  margin: 40px 0;
+  display: flex;
+  gap: 24px;
+}
+.category_page_item:first-child {margin-top: 0;}
+.category_page_item:last-child {margin-bottom: 0;}
+.category_page_item_name a {
+  font-size: var(--main_title);
+  color: var(--main_title_color);
+  font-family: 'AlumniSans';
+  line-height: 1;
+  transition: color .3s ease-in-out;
+}
+.category_page_item_name a:hover {
+  color: var(--akcent_color_hover);
+}
+.category_page_item_btn {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #383838;
+  margin-left: auto;
+  white-space: nowrap;
+  position: relative;
+  padding-right: 18px;
+  transition: color .2s ease-in-out;
+}
+.category_page_item_btn:hover {
+  color: var(--akcent_color_hover);
+}
+.category_page_item_btn::before,.category_page_item_btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  transition: all .2s ease-in-out;
+}
+.category_page_item_btn::before {background: url('img/arrow_other_prod_slider_prod_link.svg') center center / cover no-repeat;}
+.category_page_item_btn::after {opacity: 0;}
+.category_page_item_btn::after {background: url('img/arrow_other_prod_slider_prod_link_hover.svg') center center / cover no-repeat;}
+.category_page_item_btn:hover::before {opacity: 0;}
+.category_page_item_btn:hover::after {opacity: 1;}
 /* =================================== form ============================================ */
 @media (hover: hover) {
   .types_products_item:hover {background-color: #FF753B;color: #fff;background-size: auto 105%;}
@@ -1719,6 +1764,7 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
   .product_gallery {
     flex-direction: column;
     width: 49%;
+    max-height: 356px;
   }
   .product_main_slider .swiper-slide {
     min-height: 294px;
@@ -1850,7 +1896,7 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
   .contacts_map {padding: 20px var(--container_padding) 100px;}
   .contacts_map iframe {max-height: 278px;}
   .section_catalog_page {padding: 0 0 50px;}
-  .catalog_page_title {margin-bottom: 30px;}
+  .section_catalog_page .title {margin-bottom: 30px;}
   .catalog_tubs_row {margin-bottom: 30px;}
   .catalog_tubs_row {gap: 12px;}
   .catalog_item_btn {
@@ -1941,6 +1987,11 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
   .delivery_prev_right {min-height: 200px;}
 }
 /* ============================== content ======================================================= */
+.content_container {
+  padding: 0 var(--container_padding);
+  max-width: calc(1320px + var(--container_padding) * 2);
+  margin: 0 auto;
+}
 h1,.h1,
 h2,.h2,
 h3,.h3,
@@ -1953,9 +2004,9 @@ h3,.h3 {font-size: 59px;}
 h4,.h4 {font-size: 54px;}
 h5,.h5 {font-size: 49px;}
 h6,.h6 {font-size: 44px;}
-.inform_inner ol,.inform_inner ul,.inform_list {font-size: 18px;line-height: 1.5;}
-.inform_inner li,.inform_list li {padding-left: 39px;margin-bottom: 20px;position: relative;}
-.inform_inner li::before,.inform_list li::before {
+.content_container ol,.content_container ul,.inform_inner ol,.inform_inner ul {font-size: 18px;line-height: 1.5;}
+.content_container li,.inform_inner li {padding-left: 39px;margin-bottom: 20px;position: relative;}
+.content_container li::before,.inform_inner li::before {
   content: '';
   position: absolute;
   top: 0;
@@ -1965,13 +2016,13 @@ h6,.h6 {font-size: 44px;}
   background: url('img/check.svg') center center no-repeat #FFE0C0;
   border-radius: 8px;
 }
-.inform_inner ol li::before,.inform_list ol li::before {
+.content_container ol li::before,.inform_inner ol li::before {
   background: #FFE0C0;
 }
-.inform_inner ol {counter-reset: item;}
-.inform_inner ol li {counter-increment: item;}
-.inform_inner ol {list-style-type: none;}
-.inform_inner ol li::before {
+.content_container ol,.inform_inner ol {counter-reset: item;}
+.content_container ol li,.inform_inner ol li {counter-increment: item;}
+.content_container ol,.inform_inner ol {list-style-type: none;}
+.content_container ol li::before,.inform_inner ol li::before {
   content: counter(item);
   color: #F05513;
   display: flex;
@@ -1986,12 +2037,21 @@ h6,.h6 {font-size: 44px;}
   margin-top: 29px;
 }
 .inform_attention p {color: #F05513;font-size: 30px;font-family: 'AlumniSans';}
+.content_container p,
 .inform_inner p:not(.inform_title,.inform_attention p),
 .inform_text {
   font-size: var(--text_size_main_plus);
   line-height: 1.5;
   margin-bottom: 20px;
 }
+.content_container img {max-width: 100%;max-height: 100%;width: auto;height: auto}
+.content_container img.attachment-post-thumbnail {display: block;margin: 0 auto 30px;}
+.content_container img.alignright {float: right;margin: 0 0 1em 1em;}
+.content_container img.alignleft {float: left;margin: 0 1em 1em 0;}
+.content_container img.aligncenter {display: block;margin-left: auto;margin-right: auto;margin-bottom: 10px;}
+
+@media screen and (max-width:650px) {.content_container img.alignright,.content_container img.alignleft,.content_container img.aligncenter {display: block;float: none;margin: 0 auto 10px;max-width: 100%;}}
+
 @media (max-width:1100px) {
   h1,.h1 {font-size: 68px;}
   h2,.h2 {font-size: 46px;}
@@ -1999,7 +2059,7 @@ h6,.h6 {font-size: 44px;}
   h4,.h4 {font-size: 36px;}
   h5,.h5 {font-size: 31px;}
   h6,.h6 {font-size: 26px;}
-  .inform_inner ol,.inform_inner ul,.inform_list {font-size: 16px;}
+  .content_container ol,.content_container ul,.inform_inner ol,.inform_inner ul {font-size: 16px;}
   .inform_attention {border-radius: 16px;margin-top: 29px;}
   .inform_attention p {font-size: 26px;}
 }
@@ -2019,7 +2079,7 @@ h6,.h6 {font-size: 44px;}
   }
   .inform_attention p {font-size: 24px;}
 }
-@media (max-width:610px) {.inform_inner ol,.inform_inner ul,.inform_list {font-size: 15px;}}
+@media (max-width:610px) {.content_container ol,.content_container ul,.inform_inner ol,.inform_inner ul {font-size: 15px;}}
 /* ============================== content ======================================================= */
 /* ============================== Wp-pagenavi ======================================================= */
 .wp-pagenavi {

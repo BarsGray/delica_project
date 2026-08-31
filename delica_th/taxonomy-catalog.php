@@ -1,6 +1,7 @@
 <?php
 get_header();
 show_breadcrumbs();
+title_def_box();
 
 global $wp_query;
 // $qo=get_queried_object();
@@ -11,7 +12,6 @@ query_posts($args);
   if (have_posts()): ?>
     <div class="section_catalog_page">
       <div class="container">
-        <p class="catalog_page_title">Продукция</p>
         <ul class="catalog_tubs_row">
           <?php show_category(); ?>
         </ul>

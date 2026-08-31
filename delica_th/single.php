@@ -3,12 +3,12 @@ get_header();
 show_breadcrumbs();
 title_def_box();
 ?>
-<div class="container"><?php the_field("text_before");?></div>
-<div class="container"><?php the_content(); ?></div>
+<div class="content_container"><?php the_field("text_before");?></div>
+<div class="content_container"><?php the_content(); ?></div>
 <?php
 show_info_top();
 ?>
-<div class="container"><?php the_field("text_after"); ?></div>
+<div class="content_container"><?php the_field("text_after"); ?></div>
 <?php 
 show_info_bottom();
 show_form();

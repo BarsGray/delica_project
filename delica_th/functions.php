@@ -6,10 +6,11 @@ function show_breadcrumbs() { ?>
     </div>
   </div>
 <?php }
-function show_zag() {
+function show_title() {
+  $teg = is_singular('product') ? 'h1' : 'p';
   $title = '';
   if (is_tax())
-    $title = ($alt_zag = get_field('alt_zag')) ? $alt_zag : single_term_title();
+    $title = ($alt_zag = get_field('alt_zag')) ? $alt_zag : single_term_title('', false);
   elseif(is_category())
     $title = single_cat_title('', false);
   elseif(is_404())
@@ -24,12 +25,12 @@ function title_def_box() {
   <div class="section_title_def_box">
     <div class="container">
       <div class="text_box">
-        <h1 class="title"><?php show_zag(); ?></h1>
+        <h1 class='title'><?php show_title(); ?></h1>
         <?php if($title_box_description = get_field('title_box_description')): ?>
           <p class="desc"><?php echo $title_box_description; ?></p>
         <?php endif; ?>
       </div>
-      <?php if($thumbnail_url = get_the_post_thumbnail_url()): ?>
+      <?php if(!is_tax() && $thumbnail_url = get_the_post_thumbnail_url()): ?>
         <div class="img" style="background-image: url('<?php echo $thumbnail_url; ?>')"></div>
       <?php endif; ?>
       <?php if($text_btn): ?>
@@ -41,7 +42,6 @@ function title_def_box() {
 function show_contacts_page() { ?>
   <div class="section_contacts_page">
     <div class="container">
-      <p class="contacts_page_title">Контакты</p>
       <?php
         $adress          = get_field('adress');
         $graffik         = get_field('graffik');
@@ -364,7 +364,11 @@ function show_prod() {
         </div>
         <div class="product_box_info">
           <div class="info">
-            <p class="title"><?php the_title(); ?></p>
+            <?php if(get_post_type() === 'product'): ?>
+              <h1 class="title"><?php show_title(); ?></h1>
+            <?php else: ?>
+              <p class="title"><?php show_title(); ?></p>
+            <?php endif; ?>
             <?php if($params = get_field('params')): ?>
               <ul class="params_list">
                 <?php foreach($params as $param): ?>
@@ -428,7 +432,6 @@ function show_catalog() {
   if($query->have_posts()): ?>
     <div class="section_catalog_page">
       <div class="container">
-        <p class="catalog_page_title">Продукция</p>
         <ul class="catalog_tubs_row">
           <?php show_category(); ?>
         </ul>
