@@ -160,18 +160,33 @@ jQuery(function ($) {
   });
   Fancybox.bind('.foto_slider_on_main [data-fancybox="gallery_foto_slider"]', galleryParams);
 
-  // ======================= tubs =======================
-  //   const tubs_row = document.querySelector('.catalog_tubs_row');
+  // ======================= show more content =======================
+	const hideContainer = document.querySelector('.hide');
+	const hideTextContainer = document.querySelector('.hide_text');
+	const btnMore = document.querySelector('.more');
 
-  //   if (tubs_row) {
-  //     const activeTab = tubs_row.querySelector('.active');
+	if (btnMore) {
+		btnMore.addEventListener('click', () => {
+      hideContainer.classList.toggle('active');
+			hideTextContainer.classList.toggle('active');
 
-  //     tubs_row.addEventListener('wheel', (e) => {
-  //       e.preventDefault();
-  //       const direction = e.deltaY > 0 ? 1 : -1;
-  //       const scrollStep = 200;
+			if (hideTextContainer.classList.contains('active')) {
+        hideTextContainer.setAttribute('style', 'max-height: '+hideTextContainer.scrollHeight+'px;');
+        
+				btnMore.innerHTML = 'Cвернуть';
+				btnMore.classList.add('active');
+			} else {
+				btnMore.innerHTML = 'Подробнее';
+				btnMore.classList.remove('active');
 
-  //       tubs_row.scrollBy({ left: direction * scrollStep, behavior: 'smooth' });
-  //     }, { passive: false });
-  //   }
+        hideTextContainer.setAttribute('style', 'max-height: 300px;');
+			}
+		});
+	}
+	
+	// $('.gdpr > a').click(function(e){
+	// 	e.preventDefault();
+	// 	document.cookie='gdpr_site=gdpr;path=/;max-age=86400000';
+	// 	$(this).closest('.gdpr').remove();
+	// });
 });

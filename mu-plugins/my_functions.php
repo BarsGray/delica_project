@@ -10,6 +10,7 @@ if (!defined('SVG_PHONE')) {define('SVG_PHONE', '<svg width="34" height="34" vie
 if (!defined('SVG_MENU_BTN')) {define('SVG_MENU_BTN', '<svg class="ham hamRotate ham7" viewBox="0 0 100 100" width="40"><path class="line top" d="m 70,33 h -40 c 0,0 -6,1.368796 -6,8.5 0,7.131204 6,8.5013 6,8.5013 l 20,-0.0013" /><path class="line middle" d="m 70,50 h -40" /><path class="line bottom" d="m 69.575405,67.073826 h -40 c -5.592752,0 -6.873604,-9.348582 1.371031,-9.348582 8.244634,0 19.053564,21.797129 19.053564,12.274756 l 0,-40" /></svg>');}
 if (!defined('SVG_BREAD_BTN')) {define('SVG_BREAD_BTN', '<svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 11L1 6L6 1M1 6H14" stroke="#383838" stroke-linecap="round" stroke-linejoin="round"/></svg>');}
 if (!defined('SVG_PROD_ARRROW')) {define('SVG_PROD_ARRROW', '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L14.4665 11.3598C14.7756 11.7307 14.7756 12.2693 14.4665 12.6402L10 18" stroke="#383838" stroke-width="2" stroke-linecap="round"/></svg>');}
+if (!defined('SVG_SERVICE_BOX_ARROW')) {define('SVG_SERVICE_BOX_ARROW', '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.6 3.60254L10.2905 7.29309C10.6811 7.68361 10.6811 8.31678 10.2905 8.7073L6.6 12.3979" stroke="#929292" stroke-width="2"/></svg>');}
 
 add_filter('wp_speculation_rules_configuration',function(){return null;});
 add_filter('wp_img_tag_add_auto_sizes','__return_false');
@@ -33,11 +34,11 @@ function tehmonolit_th_scripts_style() {
 	wp_enqueue_style('tehmonolit_th-style', get_stylesheet_uri(), array(), _S_VERSION);
 }
 
-// add_filter('site_transient_update_plugins','filter_plugin_updates');
-// function filter_plugin_updates($value){
-// 	unset($value->response['all-in-one-seo-pack/all_in_one_seo_pack.php']);
-// 	return $value;
-// }
+add_filter('site_transient_update_plugins','filter_plugin_updates');
+function filter_plugin_updates($value){
+	unset($value->response['all-in-one-seo-pack/all_in_one_seo_pack.php']);
+	return $value;
+}
 
 add_action('admin_head','admin_head');
 function admin_head() {
