@@ -10,7 +10,7 @@ if(get_the_content()): ?>
   </div>
 <?php endif;
 
-show_prod(['post_type' => 'product']);
+show_prod('product');
 show_info_top();
 show_slider_prod();
 

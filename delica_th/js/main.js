@@ -160,9 +160,7 @@ jQuery(function ($) {
   });
   Fancybox.bind('.foto_slider_on_main [data-fancybox="gallery_foto_slider"]', galleryParams);
 
-  // $('[data-fancybox]').fancybox( {buttons: []} );
-
-  Fancybox.bind('[data-fancybox]', {});
+  Fancybox.bind('[data-fancybox="popap_box"]', {});
 
   // ======================= validate input  =============
 	const allForms = document.querySelectorAll('.wpcf7-form');

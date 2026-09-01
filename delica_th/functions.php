@@ -323,12 +323,12 @@ function show_delivery_prev() { ?>
     </div>
   </div>
 <?php }
-function show_prod() {
+function show_prod($prod = '') {
   $gallery = get_field('gallery');
   $has_thumbnail = has_post_thumbnail();
   $has_gallery = !empty($gallery) && is_array($gallery);
   ?>
-  <div class="section_product">
+  <div class="section_product<?php if($prod === 'product') echo ' product_page';?>">
     <div class="container">
       <div class="product_box">
         <div class="product_gallery">

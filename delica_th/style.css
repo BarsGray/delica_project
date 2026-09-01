@@ -313,6 +313,7 @@ body {
   gap: 20px;
   height: fit-content;
 }
+.footer {margin-top: 80px;}
 .footer_contacts_list {
   display: flex;
   flex-direction: column;
@@ -701,7 +702,7 @@ body {
   transition: color .2s ease-in-out;
 }
 .services_item_btn path {transition: stroke .3s ease-in-out;}
-.section_form {padding: 70px 0 160px;overflow: hidden;}
+.section_form {padding: 70px 0 80px;overflow: hidden;}
 .form_box {
   display: flex;
   gap: 60px;
@@ -862,6 +863,7 @@ input[type="checkbox"]:checked + span::before {background-color: var(--akcent_co
   padding-top: 40px;
   border-top: 1px solid #A1A1A1;
 }
+.product_page .product_box {padding-top: 0;border: unset;}
 .product_gallery {
   display: flex;
   gap: 24px;
@@ -920,8 +922,9 @@ input[type="checkbox"]:checked + span::before {background-color: var(--akcent_co
 .param_value {text-align: end;}
 .product_box_info .main_btn_2 {text-align: center;}
 .section_product {padding: 70px 0 70px;}
+.section_product.product_page {padding-top: 0;}
 .section_inform_box {padding: 40px 0 70px;}
-.inform_box_bottom {padding-top: 70px;}
+.inform_box_bottom {padding-top: 70px;padding-bottom: 50px;}
 .inform_inner {
   display: flex;
   gap: 24px;
@@ -1218,9 +1221,9 @@ input[type="checkbox"]:checked + span::before {background-color: var(--akcent_co
 }
 a.contacts_field_value:active {color: var(--akcent_color_hover);}
 .contacts_map {
-  padding: 50px var(--container_padding) 80px;
+  padding: 50px var(--container_padding) 0;
   max-width: calc(1320px + var(--container_padding) * 2);
-  margin: 0 auto;
+  margin: 0 auto 80px;
 }
 .contacts_map iframe {max-height: 440px;width: 100%;}
 .section_catalog_page {padding: 0 0 70px;}
@@ -1565,6 +1568,7 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
     gap: 30px;
     margin-bottom: 20px;
   }
+  .footer {margin-top: 70px;}
   .footer_menu_box nav>ul {gap: 34px;min-width: 588px;}
   .footer_middle_row {padding-bottom: 44px;}
   .footer_contacts_list .mail-link,.footer_contacts_list .footer_adress {font-size: 14px;}
@@ -1600,7 +1604,7 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
   .form_box {border-radius: 16px;padding: 40px;gap: 40px;}
   .action_title {font-size: 46px;margin-bottom: 30px;}
   .action_text {font-size: 16px;}
-  .section_form {padding: 60px 0 140px;}
+  .section_form {padding: 60px 0 70px;}
   .section_title_def_box .container {gap: 12px;}
   .section_title_def_box .img {height: 400px;border-radius: 16px;}
   .section_title_def_box .desc {margin-top: 20px;}
@@ -1657,7 +1661,7 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
   .contacts_adress {font-size: 22px;}
   .contacts_field_title{font-size: 14px;}
   .contacts_field_value{font-size: 14px;}
-  .contacts_map {padding: 20px var(--container_padding) 70px;}
+  .contacts_map {padding: 20px var(--container_padding) 0;margin-bottom: 70px;}
   .catalog_tubs_row {
     margin-left: calc(-1 * var(--container_padding));
     margin-right: calc(-1 * var(--container_padding));
@@ -1857,7 +1861,7 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
   form button {font-size: 14px;line-height: 1.4;padding: 8px 36px 8px 20px;border-radius: 14px;}
   form button::before, form button::after {width: 20px;height: 20px;left: calc(50% + 32px);}
   label span {font-size: 14px;}
-  .section_form {padding: 50px 0 120px;}
+  .section_form {padding: 50px 0 60px;}
   .section_title_def_box {padding: 0 0 20px;}
   .section_title_def_box .img {height: 300px;}
   .what_offer_item {padding-bottom: 22px;}
@@ -1897,7 +1901,7 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
   .section_delivery_prev {padding: 50px 0;}
   .contacts_box_title {font-size: 24px;}
   .contacts_adress {font-size: 18px;}
-  .contacts_map {padding: 20px var(--container_padding) 50px;}
+  .contacts_map {padding: 20px var(--container_padding) 0;margin-bottom: 50px;}
   .contacts_map iframe {max-height: 278px;}
   .section_catalog_page {padding: 0 0 50px;}
   .section_catalog_page .title {margin-bottom: 30px;}
@@ -1926,6 +1930,7 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
   .section_other_prod_slider {padding: 50px 0;}
   .section_other_prod_slider .swiper {overflow: visible;}
   .bread_crumb {margin: 40px 0 30px;}
+  .footer {margin-top: 60px;}
 }
 @media (max-width: 650px) {
   .types_products_box {grid-template-columns: 1fr;}
@@ -1992,9 +1997,9 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
 }
 /* ============================== content ======================================================= */
 .content_container {
-  padding: 40px var(--container_padding) 40px;
+  padding: 0 var(--container_padding);
   max-width: calc(1320px + var(--container_padding) * 2);
-  margin: 0 auto;
+  margin: 20px auto 40px;
 }
 h1,.h1,
 h2,.h2,
@@ -2008,17 +2013,24 @@ h3,.h3 {font-size: 59px;}
 h4,.h4 {font-size: 54px;}
 h5,.h5 {font-size: 49px;}
 h6,.h6 {font-size: 44px;}
-.content_container ol,.content_container ul,.inform_inner ol,.inform_inner ul {font-size: 18px;line-height: 1.5;}
-.content_container li,.inform_inner li {padding-left: 39px;margin-bottom: 20px;position: relative;}
+.content_container ol,.content_container ul,.inform_inner ol,.inform_inner ul {
+  font-size: 18px;line-height: 1.5;
+  position: relative;
+  left: 37px;
+  width: calc(100% - 37px);
+}
+.content_container li,.inform_inner li {margin-bottom: 20px;}
 .content_container li::before,.inform_inner li::before {
   content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
+  text-align: center;
+  display: inline-block;
   width: 27px;
   height: 27px;
   background: url('img/check.svg') center center no-repeat #FFE0C0;
   border-radius: 8px;
+  margin-right: 10px;
+  vertical-align: middle;
+  margin-left: -37px;
 }
 .content_container ol li::before,.inform_inner ol li::before {
   background: #FFE0C0;
@@ -2029,9 +2041,6 @@ h6,.h6 {font-size: 44px;}
 .content_container ol li::before,.inform_inner ol li::before {
   content: counter(item);
   color: #F05513;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-weight: 600;
 }
 .inform_attention {
@@ -2061,7 +2070,7 @@ h6,.h6 {font-size: 44px;}
 	content: '';
 	position: absolute;
 	left: 0;
-	bottom: 75px;
+	bottom: 35px;
 	width: 100%;
 	height: 100px;
 	background: -webkit-linear-gradient(to bottom, rgba(255, 255, 255, 0), #F2F2F2);
