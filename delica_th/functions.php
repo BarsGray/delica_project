@@ -34,7 +34,7 @@ function title_def_box() {
         <div class="img" style="background-image: url('<?php echo $thumbnail_url; ?>')"></div>
       <?php endif; ?>
       <?php if($text_btn): ?>
-        <a class="link main_btn_2"><?php echo $text_btn; ?></a>
+        <a href="#popup_box" data-popup_box class="link main_btn_2"><?php echo $text_btn; ?></a>
       <?php endif; ?>
     </div>
   </div>
@@ -382,7 +382,7 @@ function show_prod($prod = '') {
               </ul>
             <?php endif; ?>
           </div>
-          <a class="main_btn_2" href="#">Запросить стоимость</a>
+          <a class="main_btn_2" href="#popup_box" data-popup_box >Запросить стоимость</a>
         </div>
       </div>
     </div>

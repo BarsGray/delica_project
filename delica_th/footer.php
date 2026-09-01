@@ -6,13 +6,13 @@
           <?php if ($main_tel = get_field('main_tel', 25)): ?>
             <a href="tel:<?php echo merge_numbers($main_tel); ?>" class="main_number"><?php echo SVG_PHONE ?><span><?php echo $main_tel; ?></span></a>
           <?php endif; ?>
-          <a href="#" class="main_btn">Получить консультацию</a>
+          <a href="#popup_box" data-popup_box class="main_btn">Получить консультацию</a>
         </div>
       </div>
     </div>
     <div class="footer_middle_row">
       <div class="container">
-        <a href="#" class="main_btn">Получить консультацию</a>
+        <a href="#popup_box" data-popup_box class="main_btn">Получить консультацию</a>
         <div class="footer_contacts_box">
           <ul class="footer_contacts_list">
             <?php if ($adress = get_field('adress', 25)): ?>
@@ -42,7 +42,7 @@
   <div id="popup_box" style="display:none;" class="popup_box">
     <div class="top_box">
       <p class="popup_title">Оставить заявку</p>
-      <p class="popup_text">Оставьте свои контакты и наш специалист перезвонит вам в ближайшее время.</p>
+      <p class="popup_text">Свяжитесь с нами — подберем оптимальную продукцию под ваш бизнес, рассчитаем стоимость доставки и подготовим коммерческое предложение.</p>
     </div>
     <?php echo do_shortcode('[contact-form-7 id="23aef55" title="Контактная форма"]'); ?>
   </div>

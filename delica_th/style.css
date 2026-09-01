@@ -1484,6 +1484,59 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
 .category_page_item_btn::after {background: url('img/arrow_other_prod_slider_prod_link_hover.svg') center center / cover no-repeat;}
 .category_page_item_btn:hover::before {opacity: 0;}
 .category_page_item_btn:hover::after {opacity: 1;}
+.wpcf7 form.wpcf7-form .wpcf7-response-output {
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: #dc3232;
+}
+.popup_box .popup_title {
+  font-family: 'AlumniSans';
+  font-size: 42px;
+  color: #232323;
+  margin-bottom: 20px;
+}
+.popup_box .popup_text {
+  font-size: 15px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+.popup_box {
+  max-width: 600px;
+  border-radius: 20px;
+  padding: 30px;
+}
+.popup_box form input[type="tel"],.popup_box form input[type="text"] {
+  padding-bottom: 9px;
+}
+.popup_box form button {
+  padding: 6px 36px 6px 20px;
+  border-radius: 14px;
+  font-size: 14px;
+}
+.popup_box form button::before,.popup_box form button::after {
+  width: 20px;
+  height: 20px;
+  left: calc(50% + 32px);
+}
+.popup_box form input[type="checkbox"] + span.wpcf7-list-item-label {font-size: 14px;}
+.popup_box .f-button svg {display: none;}
+.popup_box .f-button {
+  top: -52px;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 16px;
+  background-image: url('img/close_popup.svg');
+  background-size: 55%;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.popup_box .f-button:hover {
+  color: unset;
+  background-color: #fff;
+}
 /* =================================== form ============================================ */
 @media (hover: hover) {
   .types_products_item:hover {background-color: #FF753B;color: #fff;background-size: auto 105%;}
@@ -1994,6 +2047,10 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
   .section_title_def_box .desc {margin-top: 12px;}
   .section_title_def_box .img {height: 180px;border-radius: 12px;}
   .delivery_prev_right {min-height: 200px;}
+  .popup_box {
+    padding: 16px;
+    border-radius: 16px;
+  }
 }
 /* ============================== content ======================================================= */
 .content_container {
@@ -2063,6 +2120,35 @@ h6,.h6 {font-size: 44px;}
 .content_container img.alignleft {float: left;margin: 0 1em 1em 0;}
 .content_container img.aligncenter {display: block;margin-left: auto;margin-right: auto;margin-bottom: 10px;}
 
+.content_container table {
+  display: block;
+  width: 100%;
+  line-height: 1.4;
+  border-collapse: collapse;
+  overflow-x: auto;
+  overflow: auto;
+  margin-bottom: 40px;
+  height: fit-content !important;
+  padding-bottom: 30px;
+}
+.content_container tbody {
+  min-width: 800px;
+  display: block;
+  margin: 0 auto;
+  width: fit-content;
+}
+.content_container table td {
+  padding-right: 10px;
+  padding: 20px 12px;
+  padding-right: 40px;
+  font-size: 16px;
+  border-bottom: 1px solid #C9C9C9;
+  line-height: 1.4;
+  font-weight: 400;
+  color: #282828;
+  height: 62px;
+  width: 25%;
+}
 /* ===================================== hide_content  =====================================*/
 .hide_text {transition: all .5s ease-in-out;max-height: 300px;height: fit-content;overflow: hidden;}
 .hide {position: relative;}

@@ -9,7 +9,7 @@
               <div class="container">
                 <div class="title_box">
                   <p class="title"><?php echo $slide['title']; ?></p>
-                  <a class="main_btn_2" href="#">Смотреть продукцию</a>
+                  <a class="main_btn_2" href="<?php the_permalink(12); ?>">Смотреть продукцию</a>
                 </div>
               </div>
             </div>
@@ -69,7 +69,7 @@
             Готовы предложить конкурентные условия и полный пакет документов 
             для государственных и коммерческих закупок. Работаем с тендерными площадками.
           </p>
-          <a href="#" class="main_btn">Стать нашим партнёром</a>
+          <a href="#popup_box" data-popup_box class="main_btn">Стать нашим партнёром</a>
         </div>
       </div>
     </div>
