@@ -86,7 +86,7 @@
         <div class="services_box">
           <?php while($query->have_posts()): $query->the_post(); ?>
             <a href="<?php the_permalink(); ?>" class="services_item">
-              <span class="services_item_icon" style="background-image: url('<?php the_field('service_icon');?>"></span>
+              <span class="services_item_icon" style="background-image: url('<?php the_field('service_icon');?>');"></span>
               <p class="services_item_title"><?php the_title(); ?></p>
               <p class="services_item_text"><?php the_field('service_front_text'); ?></p>
               <p class="services_item_btn">Подробнее<?php echo SVG_SERVICE_BOX_ARROW; ?></p>
