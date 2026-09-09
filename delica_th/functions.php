@@ -419,7 +419,9 @@ function show_category() {
 function show_prod_on_catalog() { ?>
   <div class="catalog_item">
     <a href="<?php the_permalink(); ?>">
-      <div class="catalog_item_img"><?php the_post_thumbnail(); ?></div>
+      <div class="catalog_item_img">
+        <?php if(get_post_thumbnail_id()): the_post_thumbnail(); else: ?><img src="<?php echo get_template_directory_uri() . '/img/istockphoto.jpg'; ?>" alt="Нет фото"> <?php endif; ?>
+      </div>
       <p class="catalog_item_name"><?php the_title(); ?></p>
       <div class="catalog_item_btn">Подробнее<?php echo SVG_PROD_ARRROW; ?></div>
     </a>
@@ -447,7 +449,7 @@ function show_catalog() {
   <?php endif;
 }
 function show_slider_prod() {
-  $query = new WP_Query(['post_type' => 'product', 'posts_per_page' => -1]);
+  $query = new WP_Query(['post_type' => 'product', 'posts_per_page' => 10]);
   
   if($query->have_posts()): ?>
       <div class="section_other_prod_slider">
@@ -465,7 +467,9 @@ function show_slider_prod() {
               <?php while($query->have_posts()): $query->the_post(); ?>
                 <div class="swiper-slide other_prod_slider_item">
                   <a href="<?php the_permalink(); ?>">
-                    <div class="other_prod_slider_img"><?php the_post_thumbnail(); ?></div>
+                    <div class="other_prod_slider_img">
+                      <?php if(get_post_thumbnail_id()): the_post_thumbnail(); else: ?><img src="<?php echo get_template_directory_uri() . '/img/istockphoto.jpg'; ?>" alt="Нет фото"> <?php endif; ?>
+                    </div>
                     <p class="other_prod_slider_name_prod"><?php the_title(); ?></p>
                   </a>
                 </div>
