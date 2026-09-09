@@ -88,12 +88,14 @@ jQuery(function ($) {
   // ======================= swiper_product ==========================
   document.querySelectorAll('.product_gallery').forEach((galleryEl) => {
     const thumbs = new Swiper(galleryEl.querySelector('.product_thumb_slider'), {
-        slidesPerView: 5,
-        spaceBetween: 11,
-        watchSlidesProgress: true,
-        slideToClickedSlide: true,
-        watchOverflow: true,
-        breakpoints: {
+      mousewheel: true,
+      slidesPerView: 5,
+      slidesPerGroup: 1,
+      spaceBetween: 11,
+      watchSlidesProgress: true,
+      slideToClickedSlide: true,
+      watchOverflow: true,
+      breakpoints: {
         1100: {
           direction: 'vertical',
           spaceBetween: 15,
@@ -106,8 +108,25 @@ jQuery(function ($) {
     });
 
     const gallery = new Swiper(galleryEl.querySelector('.product_main_slider'), {
-        spaceBetween: 10,
-        thumbs: {swiper: thumbs}
+      spaceBetween: 10,
+      thumbs: {swiper: thumbs},
+      on: {
+        slideChange(swiper) {
+          const activeIndex = swiper.activeIndex;
+          const visibleSlides = thumbs.slidesPerViewDynamic();
+
+          const firstVisible = thumbs.activeIndex;
+          const lastVisible = firstVisible + visibleSlides - 1;
+          // Активный слайд дошёл до правого/нижнего края
+          if ( activeIndex >= lastVisible && activeIndex < thumbs.slides.length - 1 ) {
+            thumbs.slideTo(firstVisible + 1);
+          }
+          // Активный слайд дошёл до левого/верхнего края
+          if (activeIndex <= firstVisible && activeIndex > 0) {
+            thumbs.slideTo(firstVisible - 1);
+          }
+        },
+      },
     });
   });
   // ======================= swiper_foto_slider =============
