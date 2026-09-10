@@ -2154,7 +2154,7 @@ h6,.h6 {font-size: 44px;}
   width: 25%;
 }
 .content_container a {color: var(--akcent_color_hover);transition: color .3s ease-in-out;}
-@media (hover: hover) {.content_container a {color: #000;}}
+@media (hover: hover) {.content_container a:hover {color: #000;}}
 /* ===================================== hide_content  =====================================*/
 .hide_text {transition: all .5s ease-in-out;max-height: 300px;height: fit-content;overflow: hidden;}
 .hide {position: relative;}
@@ -2170,9 +2170,9 @@ h6,.h6 {font-size: 44px;}
 	transition: all .5s ease-in-out;
 }
 .hide.active::after {visibility: hidden;opacity: 0;}
-.more {margin-top: 20px;padding-right: 23px; display: block;transition: all .3s ease-in-out;cursor: pointer;color: var(--akcent_color_hover);width: fit-content;position: relative;}
-.more::after,
-.more::before {
+a.more {margin-top: 20px;padding-right: 23px; display: block;transition: all .3s ease-in-out;cursor: pointer;color: var(--akcent_color_hover);width: fit-content;position: relative;}
+a.more::after,
+a.more::before {
 	content: '';
 	width: 20px;
 	height: 20px;
@@ -2181,16 +2181,16 @@ h6,.h6 {font-size: 44px;}
 	right: 0;
 	transform: translateY(-50%);
 	background: url('img/arrow_red.svg') no-repeat center center / 100%;
-	transition: all .2s ease-in-out;
+	transition: all .3s ease-in-out;
 }
-.more::after {
+a.more::after {
 	background: url('img/arrow.svg') no-repeat center center / 100%;
   opacity: 0;
 }
-.more:hover {color: #000;}
-.more:hover::before {opacity: 0;}
-.more:hover::after {opacity: 1;}
-.more.active::before,.more.active::after {display: none;}
+a.more:hover {color: #000;}
+a.more:hover::before {opacity: 0;}
+a.more:hover::after {opacity: 1;}
+a.more.active::before,a.more.active::after {display: none;}
 /* ===================================== hide_content  =====================================*/
 @media screen and (max-width:650px) {.content_container img.alignright,.content_container img.alignleft,.content_container img.aligncenter {display: block;float: none;margin: 0 auto 10px;max-width: 100%;}}
 
