@@ -2153,6 +2153,8 @@ h6,.h6 {font-size: 44px;}
   height: 62px;
   width: 25%;
 }
+.content_container a {color: var(--akcent_color_hover);transition: color .3s ease-in-out;}
+@media (hover: hover) {.content_container a {color: #000;}}
 /* ===================================== hide_content  =====================================*/
 .hide_text {transition: all .5s ease-in-out;max-height: 300px;height: fit-content;overflow: hidden;}
 .hide {position: relative;}
