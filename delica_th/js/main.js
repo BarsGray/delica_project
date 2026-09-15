@@ -117,14 +117,8 @@ jQuery(function ($) {
 
           const firstVisible = thumbs.activeIndex;
           const lastVisible = firstVisible + visibleSlides - 1;
-          // Активный слайд дошёл до правого/нижнего края
-          if ( activeIndex >= lastVisible && activeIndex < thumbs.slides.length - 1 ) {
-            thumbs.slideTo(firstVisible + 1);
-          }
-          // Активный слайд дошёл до левого/верхнего края
-          if (activeIndex <= firstVisible && activeIndex > 0) {
-            thumbs.slideTo(firstVisible - 1);
-          }
+          if ( activeIndex >= lastVisible && activeIndex < thumbs.slides.length - 1 ) { thumbs.slideTo(firstVisible + 1); }
+          if (activeIndex <= firstVisible && activeIndex > 0) { thumbs.slideTo(firstVisible - 1); }
         },
       },
     });
@@ -144,11 +138,11 @@ jQuery(function ($) {
       el: ".foto_slider__pagination",
       clickable: true,
     },
-    breakpoints: {
-      890: {
-        centeredSlides: true,
-      },
-    },
+    // breakpoints: {
+    //   890: {
+    //     centeredSlides: true,
+    //   },
+    // },
   });
   // ======================= other_prod_slider =============
   const other_prod_slider = new Swiper('.other_prod_slider', {

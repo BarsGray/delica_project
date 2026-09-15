@@ -185,11 +185,13 @@ function show_foto_slider() {
       <div class="foto_slider_container">
         <div class="foto_slider swiper">
           <div class="foto_slider_row swiper-wrapper">
-            <?php foreach($foto_slider as $slide): ?>
-              <div class="foto_slider_item swiper-slide">
-                <a href="<?php echo $slide['url']; ?>" data-fancybox="gallery_foto_slider"><img src="<?php echo $slide['url']; ?>" alt="<?php echo $slide['alt']; ?>"></a>
-              </div>
-            <?php endforeach; ?>
+            <?php
+              foreach($foto_slider as $slide): ?>
+                <div class="foto_slider_item swiper-slide">
+                  <a href="<?php echo $slide['url']; ?>" data-fancybox="gallery_foto_slider"><img src="<?php echo $slide['url']; ?>" alt="<?php echo $slide['alt']; ?>"></a>
+                </div>
+              <?php endforeach;
+            ?>
           </div>
           <a href="#" class="btn_prev"></a>
           <a href="#" class="btn_next"></a>
@@ -311,13 +313,13 @@ function show_delivery_prev() { ?>
         </div>
         <div class="delivery_item">
           <span class="delivery_items_icon icon_2"></span>
-          <p class="delivery_item_titel">Квалифицированные кадры</p>
-          <p class="delivery_item_text">Опытные водители с большим стажем, сплочённый коллектив, отсутствие текучки. Надёжность и профессионализм.</p>
+          <p class="delivery_item_titel">Современный автопарк</p>
+          <p class="delivery_item_text">Автомобили разной грузоподъёмности — доставка от 1 тонны. Техника регулярно обновляется и проходит контроль перед рейсом.</p>
         </div>
         <div class="delivery_item">
           <span class="delivery_items_icon icon_3"></span>
-          <p class="delivery_item_titel">Квалифицированные кадры</p>
-          <p class="delivery_item_text">Опытные водители с большим стажем, сплочённый коллектив, отсутствие текучки. Надёжность и профессионализм.</p>
+          <p class="delivery_item_titel">Безналичный расчёт</p>
+          <p class="delivery_item_text">Для юрлиц и ИП — полный пакет документов, счёт-фактура, закрывающие акты. Работаем с НДС</p>
         </div>
       </div>
     </div>

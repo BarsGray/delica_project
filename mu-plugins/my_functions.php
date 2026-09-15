@@ -2,7 +2,7 @@
 /* Plugin Name: My Custom Functions */
 
 if (!defined('ABSPATH')) {exit;}
-if (!defined('_S_VERSION')) {define('_S_VERSION', '1.0.002');}
+if (!defined('_S_VERSION')) {define('_S_VERSION', '1.0.005');}
 if (!defined('FRONT_PAGE')) {define('FRONT_PAGE', get_option('page_on_front'));}
 if (!defined('TEMPLATE_URL')) {define('TEMPLATE_URL', get_template_directory_uri());}
 
@@ -17,10 +17,6 @@ add_filter('wp_img_tag_add_auto_sizes','__return_false');
 add_action('after_setup_theme', function() { add_theme_support( 'html5', [ 'script', 'style' ] ); } );
 
 add_theme_support('post-thumbnails');
-// add_image_size( 'custom-gallery-thumb_10_7', 1024, 720, true );
-// add_image_size( 'custom-gallery-thumb_5_3', 500, 300, true );
-// // add_image_size( 'custom-gallery-thumb_35_30', 350, 300, true );
-// add_image_size( 'custom-gallery-thumb_40_30', 400, 300, true );
 register_nav_menus();
 
 add_action('wp_enqueue_scripts', 'tehmonolit_th_scripts_style');
@@ -38,6 +34,11 @@ add_filter('site_transient_update_plugins','filter_plugin_updates');
 function filter_plugin_updates($value){
 	unset($value->response['all-in-one-seo-pack/all_in_one_seo_pack.php']);
 	return $value;
+}
+
+add_action('template_redirect','template_redirect');
+function template_redirect() {
+	if(is_page(12)) {wp_safe_redirect(get_category_link(4), 301); exit;}
 }
 
 add_action('admin_head','admin_head');
@@ -173,8 +174,9 @@ function register_oborudovanie() {
 }
 add_action('init', 'register_oborudovanie');
 
-add_action('save_post_product', function ($post_id, $post, $update) {
-	if ($update) {return;}
-	$category_id = 4;
-	wp_set_post_terms($post_id,[$category_id],'catalog');
-}, 10, 3);
+// ====== Автоматическое добавление товаров, пр создании, в конкретную категорию ======
+// add_action('save_post_product', function ($post_id, $post, $update) {
+// 	if ($update) {return;}
+// 	$category_id = 4;
+// 	wp_set_post_terms($post_id,[$category_id],'catalog');
+// }, 10, 3);
