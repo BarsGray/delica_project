@@ -208,8 +208,38 @@ class Breadcrumbs {
 									}
 								}
 							}
-							else
+							else {
 								$term = array_shift( $terms );
+								// else {
+								// 		// Выбираем самую глубокую категорию
+								// 		$max_depth = -1;
+								// 		$selected_term = null;
+
+								// 		foreach ( $terms as $_term ) {
+								// 				$depth = 0;
+								// 				$parent_id = $_term->parent;
+
+								// 				while ( $parent_id ) {
+								// 						$parent = get_term( $parent_id, $_term->taxonomy );
+
+								// 						if ( ! is_wp_error( $parent ) ) {
+								// 								$depth++;
+								// 								$parent_id = $parent->parent;
+								// 						}
+								// 						else {
+								// 								break;
+								// 						}
+								// 				}
+
+								// 				if ( $depth > $max_depth ) {
+								// 						$max_depth = $depth;
+								// 						$selected_term = $_term;
+								// 				}
+								// 		}
+
+								// 		$term = $selected_term;
+							}
+
 
 							break;
 						}
