@@ -83,7 +83,16 @@ jQuery(function ($) {
     pagination: {
       el: ".bunner_pagination",
       clickable: true,
+    },
+    on: {
+      init: function () {
+        const buttons = document.querySelectorAll('.bunner_btn_next, .bunner_btn_prev');
+        if (this.slides.length <= 1) {
+          buttons.forEach(button => {button.style.display = 'none';});
+        }
+      }
     }
+
   });
   // ======================= swiper_product ==========================
   document.querySelectorAll('.product_gallery').forEach((galleryEl) => {
@@ -171,6 +180,7 @@ jQuery(function ($) {
     e.querySelectorAll('a').forEach(link => { link.setAttribute('data-fancybox', `gallery-${i}`); });
     Fancybox.bind(`.product_main_slider [data-fancybox="gallery-${i}"]`, galleryParams);
   });
+  
   Fancybox.bind('.foto_slider_on_main [data-fancybox="gallery_foto_slider"]', galleryParams);
 
   // Fancybox.bind('[data-fancybox="popup_box"]', {});

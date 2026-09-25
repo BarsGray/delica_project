@@ -322,6 +322,7 @@ body {font-family: 'Onest';background-color: #F3F3F3;height: fit-content;}
   font-weight: 500;
   line-height: 1.4;
 }
+.bunner_swiper {max-width: 2090px; margin: 0 auto;}
 .section_bunner .swiper-slide {height: 820px;background-size: cover;background-position: center center;}
 .bunner_pagination {text-align: center;}
 .swiper_nav_box .container {position: relative;}
@@ -949,7 +950,7 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
   background-color: #fff;
 }
 .catalog_item:active .catalog_item_img {box-shadow: 0px 10px 20px #00000014;}
-.catalog_item_name {font-family: 'AlumniSans';font-size: 30px;transition: all .3s ease-in-out;}
+.catalog_item_name {font-family: 'AlumniSans';font-size: 30px;transition: all .3s ease-in-out;margin-bottom: auto;}
 .catalog_item:active .catalog_item_name {color: var(--akcent_color_hover);}
 .catalog_item_btn {
   color: #383838;
