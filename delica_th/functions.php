@@ -454,19 +454,7 @@ function show_catalog() {
   <?php endif;
 }
 function show_slider_prod() {
-  $query = new WP_Query(
-    [
-      'post_type' => 'product',
-      'posts_per_page' => 10,
-      'tax_query' => [
-        [
-          'taxonomy' => 'catalog',
-          'field' => 'slug',
-          'terms' => 'bytovaya-produktsiya',
-        ]
-      ],
-    ]
-  );
+  $query = new WP_Query(['post_type' => 'product','posts_per_page' => 10,'tax_query' => [['taxonomy' => 'catalog','field' => 'slug','terms' => 'bytovaya-produktsiya']]]);
   
   if($query->have_posts()): ?>
       <div class="section_other_prod_slider">
