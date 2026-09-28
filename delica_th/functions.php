@@ -383,6 +383,9 @@ function show_prod($prod = '') {
                 <?php endforeach; ?>
               </ul>
             <?php endif; ?>
+            <?php if($prod_dop_info = get_field('prod_dop_info')): ?>
+              <p class="options_text"><?php echo $prod_dop_info ?></p>
+            <?php endif; ?>
           </div>
           <a class="main_btn_2" href="#popup_box" data-popup_box >Запросить стоимость</a>
         </div>
@@ -451,7 +454,19 @@ function show_catalog() {
   <?php endif;
 }
 function show_slider_prod() {
-  $query = new WP_Query(['post_type' => 'product', 'posts_per_page' => 10]);
+  $query = new WP_Query(
+    [
+      'post_type' => 'product',
+      'posts_per_page' => 10,
+      'tax_query' => [
+        [
+          'taxonomy' => 'catalog',
+          'field' => 'slug',
+          'terms' => 'bytovaya-produktsiya',
+        ]
+      ],
+    ]
+  );
   
   if($query->have_posts()): ?>
       <div class="section_other_prod_slider">

@@ -322,8 +322,14 @@ body {font-family: 'Onest';background-color: #F3F3F3;height: fit-content;}
   font-weight: 500;
   line-height: 1.4;
 }
-.bunner_swiper {max-width: 2090px; margin: 0 auto;}
-.section_bunner .swiper-slide {height: 820px;background-size: cover;background-position: center center;}
+.bunner_swiper {max-width: 3090px; margin: 0 auto;}
+.section_bunner .swiper-slide {
+  min-height: 820px;
+  max-height: 1310px;
+  height: 42.2vw;
+  background-size: cover;
+  background-position: center center;
+}
 .bunner_pagination {text-align: center;}
 .swiper_nav_box .container {position: relative;}
 .swiper_nav_box {
@@ -691,6 +697,7 @@ input[type="checkbox"]:checked + span::before {background-color: var(--akcent_co
 .product_thumb_slider .swiper-slide-thumb-active {border: 2px solid var(--akcent_color_hover);}
 .product_box_info .title {font-size: var(--main_title);color: var(--main_title_color);font-family: 'AlumniSans';margin-bottom: 20px;}
 .product_box_info {display: flex;flex-direction: column;justify-content: space-between;width: 100%;}
+.options_text {font-size: 16px;line-height: 1.4;margin-bottom: 10px;}
 .params_item {padding-bottom: 8px;border-bottom: 1px solid #EBEBEB;margin-bottom: 7px;}
 .params_item:last-child {margin-bottom: 10px;}
 .params_item p {line-height: 1.5;font-size: 16px;display: flex;justify-content: space-between;}
@@ -1308,7 +1315,7 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
   .footer_middle_row {padding-bottom: 44px;}
   .footer_contacts_list .mail-link,.footer_contacts_list .footer_adress {font-size: 14px;}
   .polit {gap: 12px;}
-  .section_bunner .swiper-slide {height: 611px;background-size: cover;background-position: 57% center;}
+  .section_bunner .swiper-slide {height: 611px;background-size: cover;background-position: 57% center;min-height: unset;}
   .title_box .title {font-size: var(--bunner_title);max-width: 550px;}
   .swiper_nav_box{bottom: 42px;}
   .section_advantages {padding-bottom: 60px;}
@@ -1354,6 +1361,7 @@ a.contacts_field_value:active {color: var(--akcent_color_hover);}
   .product_thumb_slider {min-width: 68px;}
   .product_box {gap: 12px;}
   .params_item p {font-size: 14px;}
+  .options_text {font-size: 14px;}
   .params_item {padding-bottom: 5px;border-bottom: 1px solid #EBEBEB;margin-bottom: 6px;}
   .section_product {padding: 60px 0 60px;}
   .section_inform_box {padding: 30px 0 60px;}
