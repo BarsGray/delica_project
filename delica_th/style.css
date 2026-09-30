@@ -1,5 +1,6 @@
 /* Theme Name: Delica */
 *{padding: 0;margin: 0;border: 0;}
+*{-webkit-tap-highlight-color: transparent;}
 *,*:before,*:after{-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}
 :focus,:active{outline: none;}
 a:focus,a:active{outline: none;}
@@ -693,6 +694,7 @@ input[type="checkbox"]:checked + span::before {background-color: var(--akcent_co
   width: 88px;
   border-radius: 16px;
   overflow: hidden;
+  background-color: #fff;
 }
 .product_thumb_slider .swiper-slide-thumb-active {border: 2px solid var(--akcent_color_hover);}
 .product_box_info .title {font-size: var(--main_title);color: var(--main_title_color);font-family: 'AlumniSans';margin-bottom: 20px;}
