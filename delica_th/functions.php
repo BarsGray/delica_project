@@ -427,7 +427,12 @@ function show_prod_on_catalog() { ?>
       <div class="catalog_item_img">
         <?php if(get_post_thumbnail_id()): the_post_thumbnail(); else: ?><img src="<?php echo get_template_directory_uri() . '/img/istockphoto.jpg'; ?>" alt="Нет фото"> <?php endif; ?>
       </div>
-      <p class="catalog_item_name"><?php the_title(); ?></p>
+      <p class="catalog_item_name">
+        <?php if($alt_zag_tovara = get_field('alt_zag_tovara'))
+          echo wp_kses_post($alt_zag_tovara);
+        else
+          the_title(); ?>
+      </p>
       <div class="catalog_item_btn">Подробнее<?php echo SVG_PROD_ARRROW; ?></div>
     </a>
   </div>
