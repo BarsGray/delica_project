@@ -85,7 +85,6 @@ function register_product() {
 		'edit_item' => 'Редактировать',
 		'menu_name' => 'Продукция'
 	);
-
 	$post_args = array(
 		'labels' => $post_labels,
 		'public' => true,
@@ -99,8 +98,8 @@ function register_product() {
 		'capability_type' => 'post',
 		'taxonomies' => array('catalog'),
 	);
-
 	register_post_type('product', $post_args);
+
 	$tax_labels = array(
 		'name' => 'Категории',
 		'singular_name' => 'Категория',
@@ -109,7 +108,6 @@ function register_product() {
 		'add_new_item' => 'Добавить новую категорию',
 		'edit_item' => 'Изменить категорию',
 	);
-
 	$tax_args = array(
 		'hierarchical' => true,
 		'labels' => $tax_labels,
@@ -119,7 +117,6 @@ function register_product() {
 		'rewrite' => array('slug' => 'catalog'),
 		'show_in_rest' => true,
 	);
-
 	register_taxonomy('catalog', array('product'), $tax_args);
 }
 add_action('init', 'register_product');
@@ -180,3 +177,9 @@ add_action('init', 'register_oborudovanie');
 // 	$category_id = 4;
 // 	wp_set_post_terms($post_id,[$category_id],'catalog');
 // }, 10, 3);
+
+// ===== Добавление класса current-menu-item для каталога, при нахождении категории =====
+add_filter('nav_menu_css_class', function ($classes, $item) {
+	if (is_tax('catalog') && $item->ID == 32) { $classes[] = 'current-menu-item'; }
+	return $classes;
+}, 10, 2);
