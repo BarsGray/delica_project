@@ -180,7 +180,6 @@ jQuery(function ($) {
     e.querySelectorAll('a').forEach(link => { link.setAttribute('data-fancybox', `gallery-${i}`); });
     Fancybox.bind(`.product_main_slider [data-fancybox="gallery-${i}"]`, galleryParams);
   });
-  
   Fancybox.bind('.foto_slider_on_main [data-fancybox="gallery_foto_slider"]', galleryParams);
 
   // Fancybox.bind('[data-fancybox="popup_box"]', {});
@@ -258,42 +257,40 @@ jQuery(function ($) {
 
   // ======================= show more content =======================
   document.querySelectorAll('.hide').forEach(hideContainer => {
-  const hideTextContainer = hideContainer.querySelector('.hide_text');
-  const btnMore = hideContainer.querySelector('.more');
+    const hideTextContainer = hideContainer.querySelector('.hide_text');
+    const btnMore = hideContainer.querySelector('.more');
 
-  if (!hideTextContainer || !btnMore) return;
+    if (!hideTextContainer || !btnMore) return;
 
-  if (hideTextContainer.scrollHeight > 300) {
-    hideTextContainer.style.maxHeight = '300px';
+    if (hideTextContainer.scrollHeight > 300) {
+      hideTextContainer.style.maxHeight = '300px';
 
-    btnMore.addEventListener('click', () => {
-      const isActive = hideTextContainer.classList.toggle('active');
-      
-      hideContainer.classList.toggle('active', isActive);
-      btnMore.classList.toggle('active', isActive);
-      if (isActive) {
-        btnMore.textContent = 'Свернуть';
-				btnMore.classList.add('active');
+      btnMore.addEventListener('click', () => {
+        const isActive = hideTextContainer.classList.toggle('active');
+        
+        hideContainer.classList.toggle('active', isActive);
+        btnMore.classList.toggle('active', isActive);
+        if (isActive) {
+          btnMore.textContent = 'Свернуть';
+          btnMore.classList.add('active');
 
-        hideTextContainer.style.maxHeight = hideTextContainer.scrollHeight + 'px';
-      } else {
-        btnMore.textContent = 'Подробнее';
-				btnMore.classList.remove('active');
+          hideTextContainer.style.maxHeight = hideTextContainer.scrollHeight + 'px';
+        } else {
+          btnMore.textContent = 'Подробнее';
+          btnMore.classList.remove('active');
 
-        hideTextContainer.style.maxHeight = '300px';
-      }
-    });
-  } else {
-    btnMore.style.display = 'none';
-    setTimeout(()=>{hideContainer.classList.remove('hide');},500);
-  }
-});
-	
-	// $('.gdpr > a').click(function(e){
-	// 	e.preventDefault();
-	// 	document.cookie='gdpr_site=gdpr;path=/;max-age=86400000';
-	// 	$(this).closest('.gdpr').remove();
-	// });
-
-
+          hideTextContainer.style.maxHeight = '300px';
+        }
+      });
+    } else {
+      btnMore.style.display = 'none';
+      setTimeout(()=>{hideContainer.classList.remove('hide');},500);
+    }
+  });
+  // ======================= Show cookie =============
+	$('.gdpr > a').click(function(e){
+		e.preventDefault();
+		document.cookie='gdpr_site=gdpr;path=/;max-age=86400000';
+		$(this).closest('.gdpr').remove();
+	});
 });

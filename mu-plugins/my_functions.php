@@ -61,7 +61,6 @@ add_action('kama_breadcrumbs_home_after','add_tax_custom',10,5);
 function add_tax_custom($false,$linkpatt,$sep,$ptype,$q_obj){
 	if(!is_search()){
 		$data_taxs=array(
-			'service' => 193,
 			'product' => 12
 		);
 		foreach($data_taxs as $post_type=>$id_page){
